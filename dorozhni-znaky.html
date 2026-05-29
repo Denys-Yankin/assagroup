@@ -2894,7 +2894,7 @@
 
     .catalog-shell {
       display: grid;
-      grid-template-columns: 260px minmax(0, 1fr);
+      grid-template-columns: minmax(280px, 310px) minmax(0, 1fr);
       gap: 22px;
       align-items: start;
     }
@@ -2909,6 +2909,8 @@
       border-radius: 14px;
       background: #fff;
       box-shadow: 0 14px 32px rgba(17, 31, 52, .06);
+      max-height: calc(100vh - 32px);
+      overflow: auto;
     }
 
     .filter-panel h3 {
@@ -2952,7 +2954,76 @@
     .filter-check input {
       width: 16px;
       height: 16px;
+      flex: 0 0 auto;
       accent-color: var(--blue);
+    }
+
+    .filter-group--details {
+      gap: 0;
+    }
+
+    .filter-group--details summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: #1a2230;
+      font-size: var(--fs-small);
+      line-height: 1.2;
+      font-weight: var(--fw-bold);
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .filter-group--details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .filter-group--details summary::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid rgba(6, 71, 146, .72);
+      border-bottom: 2px solid rgba(6, 71, 146, .72);
+      transform: rotate(45deg);
+      transition: transform .18s ease;
+    }
+
+    .filter-group--details[open] summary::after {
+      transform: rotate(225deg);
+    }
+
+    .filter-group__content {
+      display: grid;
+      gap: 9px;
+      max-height: 270px;
+      margin-top: 12px;
+      padding-right: 4px;
+      overflow: auto;
+    }
+
+    .filter-group__content--scenarios {
+      max-height: 360px;
+    }
+
+    .filter-subgroup {
+      display: grid;
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(168, 179, 196, .55);
+    }
+
+    .filter-subgroup:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .filter-subgroup__title {
+      color: var(--blue);
+      font-size: var(--fs-caption);
+      line-height: 1.2;
+      font-weight: var(--fw-bold);
+      text-transform: uppercase;
     }
 
     .products-grid {
@@ -3219,6 +3290,8 @@
       .filter-panel {
         position: static;
         grid-template-columns: repeat(3, minmax(0, 1fr));
+        max-height: none;
+        overflow: visible;
       }
 
       .filter-panel h3 {
@@ -3484,6 +3557,72 @@
               <label class="filter-check"><input type="checkbox"> З кріпленням</label>
               <label class="filter-check"><input type="checkbox"> Документи для тендера</label>
             </div>
+            <details class="filter-group filter-group--details">
+              <summary>Об’єкт / місце використання</summary>
+              <div class="filter-group__content">
+                <label class="filter-check"><input type="checkbox" name="place" value="road"> Дорога / вулиця</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="parking"> Паркінг</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="underground-parking"> Підземний паркінг</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="residential"> ЖК / ОСББ / двір</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="private-area"> Приватна територія</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="warehouse"> Склад / логістичний центр</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="factory"> Підприємство / завод</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="construction"> Будівельний майданчик</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="roadworks"> Дорожні роботи</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="school"> Школа / дитсадок</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="hospital"> Лікарня / соціальний об’єкт</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="business"> ТРЦ / магазин / бізнес-центр</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="service-station"> АЗС / СТО / автомийка</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="hotel"> Готель / база відпочинку</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="municipal"> Комунальна територія</label>
+                <label class="filter-check"><input type="checkbox" name="place" value="pedestrian-bike"> Пішохідна / велосипедна зона</label>
+              </div>
+            </details>
+            <details class="filter-group filter-group--details">
+              <summary>Задача / сценарій використання</summary>
+              <div class="filter-group__content filter-group__content--scenarios">
+                <div class="filter-subgroup">
+                  <div class="filter-subgroup__title">Паркування</div>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="parking-organize"> Організувати паркування</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="parking-place"> Позначити паркомісце</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="no-parking"> Заборонити стоянку / зупинку</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="accessible-parking"> Позначити місце для людей з інвалідністю</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="ev-charging"> Позначити зарядку електромобіля</label>
+                </div>
+
+                <div class="filter-subgroup">
+                  <div class="filter-subgroup__title">В’їзд і рух</div>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="entry-exit"> Організувати в’їзд / виїзд</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="no-entry"> Заборонити в’їзд / проїзд</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="access-control"> Обмежити доступ на територію</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="traffic-direction"> Направити рух транспорту</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="detour"> Організувати об’їзд</label>
+                </div>
+
+                <div class="filter-subgroup">
+                  <div class="filter-subgroup__title">Безпека</div>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="speed-limit"> Обмежити швидкість</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="warning"> Попередити про небезпеку</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="pedestrian-safety"> Забезпечити пішохідну безпеку</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="children-school"> Попередити про дітей / школу</label>
+                </div>
+
+                <div class="filter-subgroup">
+                  <div class="filter-subgroup__title">Вантажний транспорт</div>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="freight-traffic"> Організувати рух вантажного транспорту</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="loading-zone"> Позначити зону завантаження / розвантаження</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="height-weight-limit"> Обмежити висоту / вагу транспорту</label>
+                </div>
+
+                <div class="filter-subgroup">
+                  <div class="filter-subgroup__title">Територія та тимчасові схеми</div>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="site-traffic"> Організувати рух на території підприємства / складу</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="construction-site"> Позначити будівельний майданчик</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="roadworks-site"> Позначити дорожні роботи</label>
+                  <label class="filter-check"><input type="checkbox" name="scenario" value="temporary-scheme"> Організувати тимчасову схему руху</label>
+                </div>
+              </div>
+            </details>
           </aside>
 
           <div class="products-grid">
