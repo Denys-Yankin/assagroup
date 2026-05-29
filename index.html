@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>АССА-ГРУП - головна сторінка</title>
+  <style>
+    :root {
+      --blue: #064792;
+      --blue-dark: #05366f;
+      --red: #e30016;
+      --text: #101722;
+      --muted: #607086;
+      --line: #dce5f1;
+      --bg: #f5f8fc;
+      --font: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        linear-gradient(180deg, rgba(6, 71, 146, .08) 0%, rgba(6, 71, 146, 0) 38%),
+        var(--bg);
+      font-family: var(--font);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(10px);
+    }
+
+    .container {
+      width: min(1120px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+    }
+
+    .brand strong {
+      display: block;
+      color: var(--blue);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 4px;
+      color: #344257;
+      font-size: 13px;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+
+    .phone {
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .hero {
+      display: grid;
+      align-content: center;
+      min-height: 68vh;
+      padding: 72px 0;
+    }
+
+    .hero__content {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--blue);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--red);
+    }
+
+    h1 {
+      max-width: 620px;
+      margin: 0;
+      color: #07111f;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 560px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 7px;
+      font-size: 14px;
+      line-height: 1.1;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .button--primary {
+      color: #fff;
+      background: var(--blue);
+      box-shadow: 0 12px 24px rgba(6, 71, 146, .18);
+    }
+
+    .button--secondary {
+      border: 1px solid rgba(6, 71, 146, .24);
+      color: var(--blue);
+      background: #fff;
+    }
+
+    .status {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 760px;
+      margin-top: 52px;
+    }
+
+    .status__item {
+      min-height: 84px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .82);
+    }
+
+    .status__item strong {
+      display: block;
+      color: #07111f;
+      font-size: 14px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .status__item span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      color: #64748b;
+      background: #fff;
+      font-size: 13px;
+    }
+
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+    }
+
+    .footer a {
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    @media (max-width: 720px) {
+      .header__inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 48px 0;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .status {
+        grid-template-columns: 1fr;
+        margin-top: 36px;
+      }
+
+      .footer__inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <a class="brand" href="/" aria-label="АССА-ГРУП">
+            <img src="assa-logo.svg" alt="" aria-hidden="true">
+            <span>
+              <strong>АССА-ГРУП</strong>
+              <span>Дорожні знаки та обладнання</span>
+            </span>
+          </a>
+
+          <a class="phone" href="tel:+380506044384">(050) 604-43-84</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="hero">
+      <div class="container">
+        <div class="hero__content">
+          <span class="eyebrow">Головна сторінка</span>
+          <h1>Сайт АССА-ГРУП готується до запуску</h1>
+          <p class="lead">Ми створюємо головну сторінку для компанії. Поки що можна переглянути готову товарну сторінку дорожнього знака 1.1.</p>
+
+          <div class="actions">
+            <a class="button button--primary" href="znak-1-1-nebezpechnyi-povorot-pravoruch.html">Переглянути товарну сторінку</a>
+            <a class="button button--secondary" href="tel:+380506044384">Отримати консультацію</a>
+          </div>
+
+          <div class="status" aria-label="Поточні розділи сайту">
+            <div class="status__item">
+              <strong>Товарна сторінка</strong>
+              <span>Готовий HTML-макет для перевірки.</span>
+            </div>
+            <div class="status__item">
+              <strong>Головна сторінка</strong>
+              <span>Буде розроблена окремо наступним етапом.</span>
+            </div>
+            <div class="status__item">
+              <strong>GitHub Pages</strong>
+              <span>Файли підготовлені для публікації.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <span>© 2026 АССА-ГРУП</span>
+          <a href="znak-1-1-nebezpechnyi-povorot-pravoruch.html">Знак 1.1 Небезпечний поворот праворуч</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
