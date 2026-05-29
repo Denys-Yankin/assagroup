@@ -1412,7 +1412,7 @@
 
     .footer__brand {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 15px;
       width: fit-content;
     }
@@ -1423,6 +1423,11 @@
       flex: 0 0 auto;
       object-fit: contain;
       filter: drop-shadow(0 10px 22px rgba(0, 25, 65, .18));
+    }
+
+    .footer__brand-copy {
+      display: block;
+      padding-top: 1px;
     }
 
     .footer__brand-name {
@@ -1461,10 +1466,11 @@
     }
 
     .footer__legal {
-      margin: -4px 0 0;
+      display: block;
+      margin: 6px 0 0;
       color: rgba(255, 255, 255, .68);
       font-size: var(--fs-caption);
-      line-height: 1.3;
+      line-height: 1.25;
       font-weight: var(--fw-semibold);
     }
 
@@ -2973,15 +2979,15 @@
           <section class="footer__identity" aria-label="АССА-ГРУП">
             <a class="footer__brand" href="#" aria-label="АССА-ГРУП">
               <img class="footer__brand-mark" src="assa-logo.svg" alt="" aria-hidden="true">
-              <span>
+              <span class="footer__brand-copy">
                 <span class="footer__brand-name">АССА-ГРУП</span>
+                <span class="footer__legal">ФОП Крилащенко О.Л.</span>
               </span>
             </a>
             <p class="footer__claim">
               <strong>Сертифіковані дорожні знаки власного виробництва</strong>
               <span>Виготовлення, комплектація та доставка по Україні</span>
             </p>
-            <p class="footer__legal">ФОП Крилащенко О.Л.</p>
             <div class="footer__social-line">
               <span>Соцмережі</span>
               <div class="footer__socials">
