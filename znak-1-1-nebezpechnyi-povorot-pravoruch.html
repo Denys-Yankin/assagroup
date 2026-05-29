@@ -609,6 +609,10 @@
       gap: 12px;
     }
 
+    .film-row {
+      gap: 10px;
+    }
+
     .choice {
       display: inline-flex;
       align-items: center;
@@ -664,6 +668,12 @@
     .choice--card:has(input:checked) {
       border-color: #0b63c9;
       box-shadow: 0 0 0 1px #0b63c9 inset;
+    }
+
+    .film-row .choice--card {
+      width: auto;
+      min-width: 118px;
+      padding: 0 12px;
     }
 
     .buy-row {
@@ -2682,17 +2692,22 @@
             </div>
 
             <div class="option-group">
-              <div class="option-title">Матеріал</div>
-              <div class="radio-row">
-                <label class="choice">
-                  <input type="radio" name="material" checked>
+              <div class="option-title">Плівка</div>
+              <div class="radio-row film-row">
+                <label class="choice choice--card">
+                  <input type="radio" name="film" checked>
                   <span class="choice__dot"></span>
-                  Оцинкований метал
+                  5 років
                 </label>
-                <label class="choice">
-                  <input type="radio" name="material">
+                <label class="choice choice--card">
+                  <input type="radio" name="film">
                   <span class="choice__dot"></span>
-                  Композит
+                  7 років призматична
+                </label>
+                <label class="choice choice--card">
+                  <input type="radio" name="film">
+                  <span class="choice__dot"></span>
+                  10 років призматична
                 </label>
               </div>
             </div>
@@ -2736,7 +2751,7 @@
               </details>
               <details class="feature">
                 <summary><strong>Підтримка</strong><span class="feature__meta">Консультація</span></summary>
-                <p class="feature__hint">Допоможемо підібрати типорозмір, матеріал і кріплення перед оформленням.</p>
+                <p class="feature__hint">Допоможемо підібрати типорозмір, плівку і кріплення перед оформленням.</p>
               </details>
             </div>
 
