@@ -3497,13 +3497,18 @@
           </label>
         </div>
 
-        <div class="quick-picker" aria-label="Швидкий підбір дорожніх знаків">
-          <span class="quick-picker__label">Швидкий підбір</span>
+        <div class="quick-picker" aria-label="Швидкі добірки дорожніх знаків">
+          <span class="quick-picker__label">Швидкі добірки</span>
           <div class="quick-picker__items">
-            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="parking">Паркінг</button>
-            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="residential">ЖК / ОСББ</button>
-            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="roadworks">Дорожні роботи</button>
-            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="factory">Підприємство</button>
+            <button class="quick-filter" type="button" data-quick-value="bestsellers">Бестселери</button>
+            <button class="quick-filter" type="button" data-quick-value="in-stock">В наявності</button>
+            <button class="quick-filter" type="button" data-quick-value="custom-signs">Індивідуальні знаки</button>
+            <button class="quick-filter" type="button" data-quick-value="economy">Економ варіанти</button>
+            <button class="quick-filter" type="button" data-quick-value="high-visibility">Підвищена видимість</button>
+            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="parking">Для паркінгу</button>
+            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="residential">Для ЖК / ОСББ</button>
+            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="roadworks">Для дорожніх робіт</button>
+            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="factory">Для підприємства</button>
             <button class="quick-filter" type="button" data-filter-name="scenario" data-filter-value="no-parking">Заборонити стоянку</button>
             <button class="quick-filter" type="button" data-filter-name="scenario" data-filter-value="speed-limit">Обмежити швидкість</button>
           </div>
@@ -3863,10 +3868,16 @@
       const filterInputs = Array.from(filterPanel.querySelectorAll('input[type="checkbox"]'));
       const resetButton = activeFilters.querySelector(".active-filters__reset");
       const quickFilters = Array.from(document.querySelectorAll(".quick-filter"));
+      const selectedQuickTags = new Set();
 
       const getFilterLabel = (input) => {
         const label = input.closest("label");
         return label ? label.textContent.trim() : input.value;
+      };
+
+      const getQuickLabel = (value) => {
+        const button = quickFilters.find((item) => item.dataset.quickValue === value);
+        return button ? button.textContent.trim() : value;
       };
 
       const getFilterInput = (name, value) => {
@@ -3882,12 +3893,27 @@
         activeFilters.querySelectorAll(".active-filter").forEach((chip) => chip.remove());
 
         const checkedInputs = filterInputs.filter((input) => input.checked);
-        activeFilters.hidden = checkedInputs.length === 0;
-        resetButton.hidden = checkedInputs.length === 0;
+        const activeCount = checkedInputs.length + selectedQuickTags.size;
+        activeFilters.hidden = activeCount === 0;
+        resetButton.hidden = activeCount === 0;
 
         quickFilters.forEach((button) => {
+          if (button.dataset.quickValue) {
+            button.classList.toggle("is-active", selectedQuickTags.has(button.dataset.quickValue));
+            return;
+          }
+
           const input = getFilterInput(button.dataset.filterName, button.dataset.filterValue);
           button.classList.toggle("is-active", Boolean(input?.checked));
+        });
+
+        selectedQuickTags.forEach((value) => {
+          const chip = document.createElement("button");
+          chip.type = "button";
+          chip.className = "active-filter";
+          chip.dataset.quickValue = value;
+          chip.textContent = getQuickLabel(value);
+          activeFilters.insertBefore(chip, resetButton);
         });
 
         checkedInputs.forEach((input) => {
@@ -3907,6 +3933,16 @@
 
       quickFilters.forEach((button) => {
         button.addEventListener("click", () => {
+          if (button.dataset.quickValue) {
+            if (selectedQuickTags.has(button.dataset.quickValue)) {
+              selectedQuickTags.delete(button.dataset.quickValue);
+            } else {
+              selectedQuickTags.add(button.dataset.quickValue);
+            }
+            syncActiveFilters();
+            return;
+          }
+
           const input = getFilterInput(button.dataset.filterName, button.dataset.filterValue);
           if (!input) return;
 
@@ -3920,6 +3956,12 @@
         const chip = event.target.closest(".active-filter");
 
         if (chip) {
+          if (chip.dataset.quickValue) {
+            selectedQuickTags.delete(chip.dataset.quickValue);
+            syncActiveFilters();
+            return;
+          }
+
           const targetInput = getFilterInput(chip.dataset.filterName, chip.dataset.filterValue);
 
           if (targetInput) targetInput.checked = false;
@@ -3931,6 +3973,7 @@
         filterInputs.forEach((input) => {
           input.checked = false;
         });
+        selectedQuickTags.clear();
         syncActiveFilters();
       });
 
