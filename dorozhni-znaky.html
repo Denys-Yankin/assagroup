@@ -2762,50 +2762,6 @@
       font-weight: var(--fw-bold);
     }
 
-    .filter-mode {
-      display: grid;
-      gap: 8px;
-      padding-bottom: 2px;
-    }
-
-    .filter-mode__label {
-      color: var(--muted);
-      font-size: var(--fs-caption);
-      line-height: 1.2;
-      font-weight: var(--fw-semibold);
-    }
-
-    .filter-mode__tabs {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 4px;
-      padding: 4px;
-      border: 1px solid rgba(223, 228, 236, .9);
-      border-radius: 10px;
-      background: #f4f7fb;
-      min-width: 0;
-    }
-
-    .filter-mode__tabs a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 0;
-      min-height: 32px;
-      border-radius: 7px;
-      color: #344052;
-      font-size: var(--fs-caption);
-      line-height: 1;
-      font-weight: var(--fw-bold);
-      text-align: center;
-    }
-
-    .filter-mode__tabs a.is-active {
-      background: #fff;
-      color: var(--blue);
-      box-shadow: 0 7px 16px rgba(17, 31, 52, .08);
-    }
-
     .filter-group--accordion {
       gap: 0;
     }
@@ -2865,23 +2821,7 @@
 
     .filter-group--dstu .filter-group__content {
       grid-template-columns: 1fr;
-      gap: 7px;
-    }
-
-    .filter-check--tile {
-      min-height: 38px;
-      padding: 8px 9px;
-      border: 1px solid rgba(223, 228, 236, .95);
-      border-radius: 8px;
-      background: #fbfcfe;
-      color: #253044;
-      font-size: var(--fs-caption);
-      font-weight: var(--fw-bold);
-    }
-
-    .filter-check--tile input {
-      width: 14px;
-      height: 14px;
+      gap: 9px;
     }
 
     .filter-group__content {
@@ -2966,6 +2906,10 @@
       margin: 0;
     }
 
+    .active-filters[hidden] {
+      display: none;
+    }
+
     .active-filters__label {
       color: var(--muted);
       font-size: var(--fs-caption);
@@ -2996,13 +2940,6 @@
       font-weight: var(--fw-black);
     }
 
-    .active-filters__empty {
-      color: var(--muted);
-      font-size: var(--fs-caption);
-      line-height: 1;
-      font-weight: var(--fw-medium);
-    }
-
     .active-filters__reset {
       border: 0;
       background: transparent;
@@ -3012,13 +2949,6 @@
       line-height: 1;
       font-weight: var(--fw-bold);
       cursor: pointer;
-    }
-
-    .filter-check--tile:has(input:checked) {
-      border-color: rgba(6, 71, 146, .42);
-      background: #fff;
-      color: var(--blue);
-      box-shadow: inset 0 0 0 1px rgba(6, 71, 146, .18), 0 8px 18px rgba(17, 31, 52, .055);
     }
 
     .catalog-results {
@@ -3288,14 +3218,8 @@
       }
 
       .filter-panel h3,
-      .filter-mode,
       #filter-task {
         grid-column: 1 / -1;
-      }
-
-      .filter-mode {
-        grid-template-columns: auto minmax(260px, 360px);
-        align-items: center;
       }
 
       .filter-group__content--scenarios {
@@ -3327,7 +3251,6 @@
         grid-template-columns: 1fr;
       }
 
-      .filter-mode,
       .filter-group__content--scenarios {
         grid-template-columns: 1fr;
       }
@@ -3352,10 +3275,6 @@
 
       .filter-panel {
         padding: 16px;
-      }
-
-      .filter-mode__tabs a {
-        font-size: 11px;
       }
 
       .category-hero h1 {
@@ -3502,7 +3421,7 @@
         <div class="catalog-head">
           <div>
             <h2>Каталог дорожніх знаків</h2>
-            <p>Оберіть групу ДСТУ, об’єкт або сценарій використання, щоб швидше підібрати потрібний знак.</p>
+            <p>Оберіть тип знака, місце використання або сценарій, щоб швидше підібрати потрібний знак.</p>
           </div>
           <label class="catalog-sort">Сортування
             <select aria-label="Сортування товарів">
@@ -3517,28 +3436,20 @@
         <section class="catalog-shell" aria-label="Каталог товарів">
           <aside class="filter-panel" aria-label="Фільтри товарів">
             <h3>Фільтри</h3>
-            <div class="filter-mode" aria-label="Спосіб пошуку">
-              <span class="filter-mode__label">Шукати за</span>
-              <div class="filter-mode__tabs">
-                <a class="is-active" href="#filter-dstu">ДСТУ</a>
-                <a href="#filter-place">Об’єкт</a>
-                <a href="#filter-task">Задача</a>
-              </div>
-            </div>
             <div class="filter-group filter-group--dstu" id="filter-dstu">
-              <div class="filter-group__title">ДСТУ</div>
+              <div class="filter-group__title">Тип знака за ДСТУ</div>
               <div class="filter-group__content">
-                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="warning"> Попереджувальні</label>
-                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="priority"> Пріоритету</label>
-                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="prohibitory"> Заборонні</label>
-                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="mandatory"> Наказові</label>
-                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="information"> Інформаційні</label>
-                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="service"> Сервісу</label>
-                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="plates"> Таблички</label>
+                <label class="filter-check"><input type="checkbox" name="sign_group" value="warning"> Попереджувальні знаки</label>
+                <label class="filter-check"><input type="checkbox" name="sign_group" value="priority"> Знаки пріоритету</label>
+                <label class="filter-check"><input type="checkbox" name="sign_group" value="prohibitory"> Заборонні знаки</label>
+                <label class="filter-check"><input type="checkbox" name="sign_group" value="mandatory"> Наказові знаки</label>
+                <label class="filter-check"><input type="checkbox" name="sign_group" value="information"> Інформаційно-вказівні знаки</label>
+                <label class="filter-check"><input type="checkbox" name="sign_group" value="service"> Дорожні знаки сервісу</label>
+                <label class="filter-check"><input type="checkbox" name="sign_group" value="plates"> Таблички до дорожніх знаків</label>
               </div>
             </div>
             <details class="filter-group filter-group--accordion" id="filter-place" open>
-              <summary>Об’єкт / місце використання</summary>
+              <summary>Місце використання</summary>
               <div class="filter-group__content">
                 <label class="filter-check"><input type="checkbox" name="place" value="road"> Дорога / вулиця</label>
                 <label class="filter-check"><input type="checkbox" name="place" value="parking"> Паркінг</label>
@@ -3562,7 +3473,7 @@
               </div>
             </details>
             <details class="filter-group filter-group--accordion" id="filter-task" open>
-              <summary>Задача / сценарій використання</summary>
+              <summary>Задача / сценарій</summary>
               <div class="filter-group__content filter-group__content--scenarios">
                 <details class="filter-subgroup">
                   <summary>Паркування</summary>
@@ -3619,9 +3530,8 @@
           </aside>
 
           <div class="catalog-results">
-            <div class="active-filters" aria-label="Активні фільтри" aria-live="polite">
+            <div class="active-filters" aria-label="Активні фільтри" aria-live="polite" hidden>
               <span class="active-filters__label">Активні фільтри:</span>
-              <span class="active-filters__empty">не обрано</span>
               <button class="active-filters__reset" type="button" hidden>Очистити</button>
             </div>
 
@@ -3873,9 +3783,7 @@
 
     if (filterPanel && activeFilters) {
       const filterInputs = Array.from(filterPanel.querySelectorAll('input[type="checkbox"]'));
-      const emptyState = activeFilters.querySelector(".active-filters__empty");
       const resetButton = activeFilters.querySelector(".active-filters__reset");
-      const filterTabs = Array.from(filterPanel.querySelectorAll(".filter-mode__tabs a"));
 
       const getFilterLabel = (input) => {
         const label = input.closest("label");
@@ -3886,7 +3794,7 @@
         activeFilters.querySelectorAll(".active-filter").forEach((chip) => chip.remove());
 
         const checkedInputs = filterInputs.filter((input) => input.checked);
-        emptyState.hidden = checkedInputs.length > 0;
+        activeFilters.hidden = checkedInputs.length === 0;
         resetButton.hidden = checkedInputs.length === 0;
 
         checkedInputs.forEach((input) => {
@@ -3902,13 +3810,6 @@
 
       filterInputs.forEach((input) => {
         input.addEventListener("change", syncActiveFilters);
-      });
-
-      filterTabs.forEach((tabLink) => {
-        tabLink.addEventListener("click", () => {
-          filterTabs.forEach((currentLink) => currentLink.classList.remove("is-active"));
-          tabLink.classList.add("is-active");
-        });
       });
 
       activeFilters.addEventListener("click", (event) => {
