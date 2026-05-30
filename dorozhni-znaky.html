@@ -2712,6 +2712,58 @@
       font-weight: var(--fw-semibold);
     }
 
+    .quick-picker {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: 12px 16px;
+      margin: 0 0 18px;
+      padding: 14px 16px;
+      border: 1px solid rgba(223, 228, 236, .9);
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(17, 31, 52, .055);
+    }
+
+    .quick-picker__label {
+      color: #1a2230;
+      font-size: var(--fs-small);
+      line-height: 1.15;
+      font-weight: var(--fw-bold);
+      white-space: nowrap;
+    }
+
+    .quick-picker__items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .quick-filter {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border: 1px solid rgba(6, 71, 146, .16);
+      border-radius: 999px;
+      background: #fbfcfe;
+      color: #263243;
+      padding: 0 12px;
+      font-size: var(--fs-caption);
+      line-height: 1;
+      font-weight: var(--fw-bold);
+      cursor: pointer;
+      transition: border-color .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
+    }
+
+    .quick-filter:hover,
+    .quick-filter.is-active {
+      border-color: rgba(6, 71, 146, .36);
+      background: #fff;
+      color: var(--blue);
+      box-shadow: 0 8px 18px rgba(17, 31, 52, .06);
+    }
+
     .catalog-shell {
       display: grid;
       grid-template-columns: minmax(280px, 310px) minmax(0, 1fr);
@@ -2891,11 +2943,11 @@
     }
 
     .filter-more summary::after {
-      content: "Показати всі об’єкти";
+      content: "Показати більше місць";
     }
 
     .filter-more[open] summary::after {
-      content: "Сховати частину об’єктів";
+      content: "Сховати частину місць";
     }
 
     .active-filters {
@@ -3247,6 +3299,10 @@
         flex-direction: column;
       }
 
+      .quick-picker {
+        grid-template-columns: 1fr;
+      }
+
       .filter-panel {
         grid-template-columns: 1fr;
       }
@@ -3277,6 +3333,20 @@
         padding: 16px;
       }
 
+      .quick-picker {
+        padding: 14px;
+      }
+
+      .quick-picker__items {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .quick-filter {
+        flex: 0 0 auto;
+      }
+
       .category-hero h1 {
         font-size: var(--fs-title-mobile);
       }
@@ -3290,13 +3360,13 @@
       }
 
       .product-card {
-        grid-template-columns: 104px minmax(0, 1fr);
+        grid-template-columns: 1fr;
         grid-template-rows: auto auto;
       }
 
       .product-card__visual {
-        grid-row: 1 / 3;
-        min-height: auto;
+        grid-row: auto;
+        min-height: 130px;
       }
 
       .sign-preview {
@@ -3313,7 +3383,7 @@
       }
 
       .product-card__bottom {
-        grid-column: 1 / -1;
+        grid-column: auto;
         gap: 8px;
         padding: 0 14px 14px;
       }
@@ -3323,6 +3393,7 @@
         padding: 0 10px;
       }
     }
+
   </style>
 </head>
 <body>
@@ -3421,7 +3492,7 @@
         <div class="catalog-head">
           <div>
             <h2>Каталог дорожніх знаків</h2>
-            <p>Оберіть тип знака, місце використання або сценарій, щоб швидше підібрати потрібний знак.</p>
+            <p>Почніть зі швидкого сценарію або уточніть підбір фільтрами нижче.</p>
           </div>
           <label class="catalog-sort">Сортування
             <select aria-label="Сортування товарів">
@@ -3433,11 +3504,23 @@
           </label>
         </div>
 
+        <div class="quick-picker" aria-label="Швидкий підбір дорожніх знаків">
+          <span class="quick-picker__label">Швидкий підбір</span>
+          <div class="quick-picker__items">
+            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="parking">Паркінг</button>
+            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="residential">ЖК / ОСББ</button>
+            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="roadworks">Дорожні роботи</button>
+            <button class="quick-filter" type="button" data-filter-name="place" data-filter-value="factory">Підприємство</button>
+            <button class="quick-filter" type="button" data-filter-name="scenario" data-filter-value="no-parking">Заборонити стоянку</button>
+            <button class="quick-filter" type="button" data-filter-name="scenario" data-filter-value="speed-limit">Обмежити швидкість</button>
+          </div>
+        </div>
+
         <section class="catalog-shell" aria-label="Каталог товарів">
           <aside class="filter-panel" aria-label="Фільтри товарів">
             <h3>Фільтри</h3>
             <div class="filter-group filter-group--dstu" id="filter-dstu">
-              <div class="filter-group__title">Тип знака за ДСТУ</div>
+              <div class="filter-group__title">Група знаків</div>
               <div class="filter-group__content">
                 <label class="filter-check"><input type="checkbox" name="sign_group" value="warning"> Попереджувальні знаки</label>
                 <label class="filter-check"><input type="checkbox" name="sign_group" value="priority"> Знаки пріоритету</label>
@@ -3449,7 +3532,7 @@
               </div>
             </div>
             <details class="filter-group filter-group--accordion" id="filter-place" open>
-              <summary>Місце використання</summary>
+              <summary>Де буде встановлено</summary>
               <div class="filter-group__content">
                 <label class="filter-check"><input type="checkbox" name="place" value="road"> Дорога / вулиця</label>
                 <label class="filter-check"><input type="checkbox" name="place" value="parking"> Паркінг</label>
@@ -3473,9 +3556,9 @@
               </div>
             </details>
             <details class="filter-group filter-group--accordion" id="filter-task" open>
-              <summary>Задача / сценарій</summary>
+              <summary>Що потрібно зробити</summary>
               <div class="filter-group__content filter-group__content--scenarios">
-                <details class="filter-subgroup">
+                <details class="filter-subgroup" open>
                   <summary>Паркування</summary>
                   <div class="filter-subgroup__items">
                     <label class="filter-check"><input type="checkbox" name="scenario" value="parking-organize"> Організувати паркування</label>
@@ -3784,10 +3867,20 @@
     if (filterPanel && activeFilters) {
       const filterInputs = Array.from(filterPanel.querySelectorAll('input[type="checkbox"]'));
       const resetButton = activeFilters.querySelector(".active-filters__reset");
+      const quickFilters = Array.from(document.querySelectorAll(".quick-filter"));
 
       const getFilterLabel = (input) => {
         const label = input.closest("label");
         return label ? label.textContent.trim() : input.value;
+      };
+
+      const getFilterInput = (name, value) => {
+        return filterInputs.find((input) => input.name === name && input.value === value);
+      };
+
+      const openFilterPath = (input) => {
+        input.closest("#filter-place, #filter-task")?.setAttribute("open", "");
+        input.closest(".filter-more, .filter-subgroup")?.setAttribute("open", "");
       };
 
       const syncActiveFilters = () => {
@@ -3796,6 +3889,11 @@
         const checkedInputs = filterInputs.filter((input) => input.checked);
         activeFilters.hidden = checkedInputs.length === 0;
         resetButton.hidden = checkedInputs.length === 0;
+
+        quickFilters.forEach((button) => {
+          const input = getFilterInput(button.dataset.filterName, button.dataset.filterValue);
+          button.classList.toggle("is-active", Boolean(input?.checked));
+        });
 
         checkedInputs.forEach((input) => {
           const chip = document.createElement("button");
@@ -3812,13 +3910,22 @@
         input.addEventListener("change", syncActiveFilters);
       });
 
+      quickFilters.forEach((button) => {
+        button.addEventListener("click", () => {
+          const input = getFilterInput(button.dataset.filterName, button.dataset.filterValue);
+          if (!input) return;
+
+          input.checked = !input.checked;
+          if (input.checked) openFilterPath(input);
+          syncActiveFilters();
+        });
+      });
+
       activeFilters.addEventListener("click", (event) => {
         const chip = event.target.closest(".active-filter");
 
         if (chip) {
-          const targetInput = filterInputs.find((input) => {
-            return input.name === chip.dataset.filterName && input.value === chip.dataset.filterValue;
-          });
+          const targetInput = getFilterInput(chip.dataset.filterName, chip.dataset.filterValue);
 
           if (targetInput) targetInput.checked = false;
           syncActiveFilters();
