@@ -2717,6 +2717,7 @@
       grid-template-columns: minmax(280px, 310px) minmax(0, 1fr);
       gap: 22px;
       align-items: start;
+      min-width: 0;
     }
 
     .filter-panel {
@@ -2731,6 +2732,7 @@
       box-shadow: 0 14px 32px rgba(17, 31, 52, .06);
       max-height: calc(100vh - 32px);
       overflow: auto;
+      min-width: 0;
     }
 
     .filter-panel h3 {
@@ -2758,6 +2760,50 @@
       font-size: var(--fs-small);
       line-height: 1.15;
       font-weight: var(--fw-bold);
+    }
+
+    .filter-mode {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 2px;
+    }
+
+    .filter-mode__label {
+      color: var(--muted);
+      font-size: var(--fs-caption);
+      line-height: 1.2;
+      font-weight: var(--fw-semibold);
+    }
+
+    .filter-mode__tabs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid rgba(223, 228, 236, .9);
+      border-radius: 10px;
+      background: #f4f7fb;
+      min-width: 0;
+    }
+
+    .filter-mode__tabs a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 32px;
+      border-radius: 7px;
+      color: #344052;
+      font-size: var(--fs-caption);
+      line-height: 1;
+      font-weight: var(--fw-bold);
+      text-align: center;
+    }
+
+    .filter-mode__tabs a.is-active {
+      background: #fff;
+      color: var(--blue);
+      box-shadow: 0 7px 16px rgba(17, 31, 52, .08);
     }
 
     .filter-group--accordion {
@@ -2817,6 +2863,27 @@
       accent-color: var(--blue);
     }
 
+    .filter-group--dstu .filter-group__content {
+      grid-template-columns: 1fr;
+      gap: 7px;
+    }
+
+    .filter-check--tile {
+      min-height: 38px;
+      padding: 8px 9px;
+      border: 1px solid rgba(223, 228, 236, .95);
+      border-radius: 8px;
+      background: #fbfcfe;
+      color: #253044;
+      font-size: var(--fs-caption);
+      font-weight: var(--fw-bold);
+    }
+
+    .filter-check--tile input {
+      width: 14px;
+      height: 14px;
+    }
+
     .filter-group__content {
       display: grid;
       gap: 9px;
@@ -2857,16 +2924,122 @@
       margin-top: 8px;
     }
 
+    .filter-more {
+      display: grid;
+      gap: 9px;
+    }
+
+    .filter-more summary {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      min-height: 30px;
+      color: var(--blue);
+      font-size: var(--fs-caption);
+      line-height: 1;
+      font-weight: var(--fw-bold);
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .filter-more summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .filter-more[open] summary {
+      margin-bottom: 4px;
+    }
+
+    .filter-more summary::after {
+      content: "Показати всі об’єкти";
+    }
+
+    .filter-more[open] summary::after {
+      content: "Сховати частину об’єктів";
+    }
+
+    .active-filters {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+    }
+
+    .active-filters__label {
+      color: var(--muted);
+      font-size: var(--fs-caption);
+      line-height: 1;
+      font-weight: var(--fw-semibold);
+    }
+
+    .active-filter {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      border: 1px solid rgba(6, 71, 146, .18);
+      border-radius: 999px;
+      background: #fff;
+      color: #1d2a3b;
+      padding: 6px 10px;
+      font-size: var(--fs-caption);
+      line-height: 1;
+      font-weight: var(--fw-bold);
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .active-filter::after {
+      content: "×";
+      margin-left: 7px;
+      color: var(--blue);
+      font-weight: var(--fw-black);
+    }
+
+    .active-filters__empty {
+      color: var(--muted);
+      font-size: var(--fs-caption);
+      line-height: 1;
+      font-weight: var(--fw-medium);
+    }
+
+    .active-filters__reset {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      color: var(--blue);
+      font-size: var(--fs-caption);
+      line-height: 1;
+      font-weight: var(--fw-bold);
+      cursor: pointer;
+    }
+
+    .filter-check--tile:has(input:checked) {
+      border-color: rgba(6, 71, 146, .42);
+      background: #fff;
+      color: var(--blue);
+      box-shadow: inset 0 0 0 1px rgba(6, 71, 146, .18), 0 8px 18px rgba(17, 31, 52, .055);
+    }
+
+    .catalog-results {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      min-width: 0;
+    }
+
     .products-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
+      min-width: 0;
     }
 
     .product-card {
       display: grid;
       grid-template-rows: auto 1fr auto;
       min-height: 100%;
+      min-width: 0;
       border: 1px solid var(--line);
       border-radius: 14px;
       background: #fff;
@@ -3108,13 +3281,30 @@
 
       .filter-panel {
         position: static;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 22px;
         max-height: none;
         overflow: visible;
       }
 
-      .filter-panel h3 {
+      .filter-panel h3,
+      .filter-mode,
+      #filter-task {
         grid-column: 1 / -1;
+      }
+
+      .filter-mode {
+        grid-template-columns: auto minmax(260px, 360px);
+        align-items: center;
+      }
+
+      .filter-group__content--scenarios {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 16px;
+      }
+
+      .filter-group--dstu .filter-group__content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -3137,6 +3327,15 @@
         grid-template-columns: 1fr;
       }
 
+      .filter-mode,
+      .filter-group__content--scenarios {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-group--dstu .filter-group__content {
+        grid-template-columns: 1fr;
+      }
+
       .products-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -3149,6 +3348,14 @@
     @media (max-width: 560px) {
       .category-hero {
         gap: 14px;
+      }
+
+      .filter-panel {
+        padding: 16px;
+      }
+
+      .filter-mode__tabs a {
+        font-size: 11px;
       }
 
       .category-hero h1 {
@@ -3164,7 +3371,7 @@
       }
 
       .product-card {
-        grid-template-columns: 120px minmax(0, 1fr);
+        grid-template-columns: 104px minmax(0, 1fr);
         grid-template-rows: auto auto;
       }
 
@@ -3187,11 +3394,14 @@
       }
 
       .product-card__bottom {
+        grid-column: 1 / -1;
+        gap: 8px;
         padding: 0 14px 14px;
       }
 
       .product-card__button {
-        min-width: 94px;
+        min-width: 0;
+        padding: 0 10px;
       }
     }
   </style>
@@ -3307,40 +3517,51 @@
         <section class="catalog-shell" aria-label="Каталог товарів">
           <aside class="filter-panel" aria-label="Фільтри товарів">
             <h3>Фільтри</h3>
-            <div class="filter-group">
-              <div class="filter-group__title">ДСТУ</div>
-              <div class="filter-group__content">
-                <label class="filter-check"><input type="checkbox" name="sign_group" value="warning"> Попереджувальні знаки</label>
-                <label class="filter-check"><input type="checkbox" name="sign_group" value="priority"> Знаки пріоритету</label>
-                <label class="filter-check"><input type="checkbox" name="sign_group" value="prohibitory"> Заборонні знаки</label>
-                <label class="filter-check"><input type="checkbox" name="sign_group" value="mandatory"> Наказові знаки</label>
-                <label class="filter-check"><input type="checkbox" name="sign_group" value="information"> Інформаційно-вказівні знаки</label>
-                <label class="filter-check"><input type="checkbox" name="sign_group" value="service"> Дорожні знаки сервісу</label>
-                <label class="filter-check"><input type="checkbox" name="sign_group" value="plates"> Таблички до дорожніх знаків</label>
+            <div class="filter-mode" aria-label="Спосіб пошуку">
+              <span class="filter-mode__label">Шукати за</span>
+              <div class="filter-mode__tabs">
+                <a class="is-active" href="#filter-dstu">ДСТУ</a>
+                <a href="#filter-place">Об’єкт</a>
+                <a href="#filter-task">Задача</a>
               </div>
             </div>
-            <details class="filter-group filter-group--accordion" open>
+            <div class="filter-group filter-group--dstu" id="filter-dstu">
+              <div class="filter-group__title">ДСТУ</div>
+              <div class="filter-group__content">
+                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="warning"> Попереджувальні</label>
+                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="priority"> Пріоритету</label>
+                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="prohibitory"> Заборонні</label>
+                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="mandatory"> Наказові</label>
+                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="information"> Інформаційні</label>
+                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="service"> Сервісу</label>
+                <label class="filter-check filter-check--tile"><input type="checkbox" name="sign_group" value="plates"> Таблички</label>
+              </div>
+            </div>
+            <details class="filter-group filter-group--accordion" id="filter-place" open>
               <summary>Об’єкт / місце використання</summary>
               <div class="filter-group__content">
                 <label class="filter-check"><input type="checkbox" name="place" value="road"> Дорога / вулиця</label>
                 <label class="filter-check"><input type="checkbox" name="place" value="parking"> Паркінг</label>
-                <label class="filter-check"><input type="checkbox" name="place" value="underground-parking"> Підземний паркінг</label>
                 <label class="filter-check"><input type="checkbox" name="place" value="residential"> ЖК / ОСББ / двір</label>
-                <label class="filter-check"><input type="checkbox" name="place" value="private-area"> Приватна територія</label>
                 <label class="filter-check"><input type="checkbox" name="place" value="warehouse"> Склад / логістичний центр</label>
                 <label class="filter-check"><input type="checkbox" name="place" value="factory"> Підприємство / завод</label>
-                <label class="filter-check"><input type="checkbox" name="place" value="construction"> Будівельний майданчик</label>
                 <label class="filter-check"><input type="checkbox" name="place" value="roadworks"> Дорожні роботи</label>
-                <label class="filter-check"><input type="checkbox" name="place" value="school"> Школа / дитсадок</label>
-                <label class="filter-check"><input type="checkbox" name="place" value="hospital"> Лікарня / соціальний об’єкт</label>
-                <label class="filter-check"><input type="checkbox" name="place" value="business"> ТРЦ / магазин / бізнес-центр</label>
-                <label class="filter-check"><input type="checkbox" name="place" value="service-station"> АЗС / СТО / автомийка</label>
-                <label class="filter-check"><input type="checkbox" name="place" value="hotel"> Готель / база відпочинку</label>
-                <label class="filter-check"><input type="checkbox" name="place" value="municipal"> Комунальна територія</label>
-                <label class="filter-check"><input type="checkbox" name="place" value="pedestrian-bike"> Пішохідна / велосипедна зона</label>
+                <details class="filter-more">
+                  <summary></summary>
+                  <label class="filter-check"><input type="checkbox" name="place" value="underground-parking"> Підземний паркінг</label>
+                  <label class="filter-check"><input type="checkbox" name="place" value="private-area"> Приватна територія</label>
+                  <label class="filter-check"><input type="checkbox" name="place" value="construction"> Будівельний майданчик</label>
+                  <label class="filter-check"><input type="checkbox" name="place" value="school"> Школа / дитсадок</label>
+                  <label class="filter-check"><input type="checkbox" name="place" value="hospital"> Лікарня / соціальний об’єкт</label>
+                  <label class="filter-check"><input type="checkbox" name="place" value="business"> ТРЦ / магазин / бізнес-центр</label>
+                  <label class="filter-check"><input type="checkbox" name="place" value="service-station"> АЗС / СТО / автомийка</label>
+                  <label class="filter-check"><input type="checkbox" name="place" value="hotel"> Готель / база відпочинку</label>
+                  <label class="filter-check"><input type="checkbox" name="place" value="municipal"> Комунальна територія</label>
+                  <label class="filter-check"><input type="checkbox" name="place" value="pedestrian-bike"> Пішохідна / велосипедна зона</label>
+                </details>
               </div>
             </details>
-            <details class="filter-group filter-group--accordion" open>
+            <details class="filter-group filter-group--accordion" id="filter-task" open>
               <summary>Задача / сценарій використання</summary>
               <div class="filter-group__content filter-group__content--scenarios">
                 <details class="filter-subgroup">
@@ -3397,7 +3618,14 @@
             </details>
           </aside>
 
-          <div class="products-grid">
+          <div class="catalog-results">
+            <div class="active-filters" aria-label="Активні фільтри" aria-live="polite">
+              <span class="active-filters__label">Активні фільтри:</span>
+              <span class="active-filters__empty">не обрано</span>
+              <button class="active-filters__reset" type="button" hidden>Очистити</button>
+            </div>
+
+            <div class="products-grid">
             <article class="product-card">
               <a class="product-card__visual" href="znak-1-1-nebezpechnyi-povorot-pravoruch.html" aria-label="Знак 1.1 Небезпечний поворот праворуч">
                 <span class="sign-preview sign-preview--triangle"><strong>1.1</strong></span>
@@ -3503,6 +3731,7 @@
                 <a class="product-card__button" href="#">Детальніше</a>
               </div>
             </article>
+            </div>
           </div>
         </section>
 
@@ -3638,6 +3867,72 @@
         item.open = false;
       });
     });
+
+    const filterPanel = document.querySelector(".filter-panel");
+    const activeFilters = document.querySelector(".active-filters");
+
+    if (filterPanel && activeFilters) {
+      const filterInputs = Array.from(filterPanel.querySelectorAll('input[type="checkbox"]'));
+      const emptyState = activeFilters.querySelector(".active-filters__empty");
+      const resetButton = activeFilters.querySelector(".active-filters__reset");
+      const filterTabs = Array.from(filterPanel.querySelectorAll(".filter-mode__tabs a"));
+
+      const getFilterLabel = (input) => {
+        const label = input.closest("label");
+        return label ? label.textContent.trim() : input.value;
+      };
+
+      const syncActiveFilters = () => {
+        activeFilters.querySelectorAll(".active-filter").forEach((chip) => chip.remove());
+
+        const checkedInputs = filterInputs.filter((input) => input.checked);
+        emptyState.hidden = checkedInputs.length > 0;
+        resetButton.hidden = checkedInputs.length === 0;
+
+        checkedInputs.forEach((input) => {
+          const chip = document.createElement("button");
+          chip.type = "button";
+          chip.className = "active-filter";
+          chip.dataset.filterName = input.name;
+          chip.dataset.filterValue = input.value;
+          chip.textContent = getFilterLabel(input);
+          activeFilters.insertBefore(chip, resetButton);
+        });
+      };
+
+      filterInputs.forEach((input) => {
+        input.addEventListener("change", syncActiveFilters);
+      });
+
+      filterTabs.forEach((tabLink) => {
+        tabLink.addEventListener("click", () => {
+          filterTabs.forEach((currentLink) => currentLink.classList.remove("is-active"));
+          tabLink.classList.add("is-active");
+        });
+      });
+
+      activeFilters.addEventListener("click", (event) => {
+        const chip = event.target.closest(".active-filter");
+
+        if (chip) {
+          const targetInput = filterInputs.find((input) => {
+            return input.name === chip.dataset.filterName && input.value === chip.dataset.filterValue;
+          });
+
+          if (targetInput) targetInput.checked = false;
+          syncActiveFilters();
+          return;
+        }
+
+        if (!event.target.closest(".active-filters__reset")) return;
+        filterInputs.forEach((input) => {
+          input.checked = false;
+        });
+        syncActiveFilters();
+      });
+
+      syncActiveFilters();
+    }
   </script>
 </body>
 </html>
