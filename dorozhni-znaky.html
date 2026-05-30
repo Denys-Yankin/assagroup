@@ -2589,30 +2589,6 @@
       padding: 24px 0 56px;
     }
 
-    .breadcrumbs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      margin: 0 0 20px;
-      color: var(--muted);
-      font-size: var(--fs-caption);
-      font-weight: var(--fw-medium);
-    }
-
-    .breadcrumbs a {
-      color: var(--muted);
-    }
-
-    .breadcrumbs a:hover {
-      color: var(--blue);
-    }
-
-    .breadcrumbs span {
-      color: #222936;
-      font-weight: var(--fw-semibold);
-    }
-
     .category-hero {
       display: block;
       margin-bottom: 30px;
@@ -2624,7 +2600,6 @@
       background: linear-gradient(180deg, #fff 0%, #f8fbff 100%);
       box-shadow: 0 18px 46px rgba(17, 31, 52, .08);
       padding: 28px;
-      min-height: 250px;
     }
 
     .category-label {
@@ -2665,27 +2640,6 @@
       font-size: var(--fs-body);
       line-height: 1.58;
       font-weight: var(--fw-medium);
-    }
-
-    .category-hero__proofs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 22px;
-    }
-
-    .proof-chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 34px;
-      padding: 8px 12px;
-      border: 1px solid rgba(6, 71, 146, .14);
-      border-radius: 999px;
-      background: #fff;
-      color: #1f2a3a;
-      font-size: var(--fs-small);
-      line-height: 1.1;
-      font-weight: var(--fw-semibold);
     }
 
     .product-card__button,
@@ -3001,13 +2955,6 @@
       font-weight: var(--fw-bold);
     }
 
-    .product-card__meta {
-      color: var(--muted);
-      font-size: var(--fs-caption);
-      line-height: 1.35;
-      font-weight: var(--fw-medium);
-    }
-
     .product-card__bottom {
       display: flex;
       align-items: center;
@@ -3200,10 +3147,6 @@
     }
 
     @media (max-width: 560px) {
-      .breadcrumbs {
-        margin-bottom: 14px;
-      }
-
       .category-hero {
         gap: 14px;
       }
@@ -3337,31 +3280,19 @@
 
     <main class="category-main">
       <div class="container">
-        <nav class="breadcrumbs" aria-label="Хлібні крихти">
-          <a href="index.html">Головна</a>
-          <span aria-hidden="true">/</span>
-          <span>Дорожні знаки</span>
-        </nav>
-
         <section class="category-hero" aria-labelledby="category-title">
           <div class="category-hero__content">
             <span class="category-label">Каталог дорожніх знаків</span>
             <h1 id="category-title">Дорожні знаки за ДСТУ 4100:2021</h1>
             <p class="category-hero__lead">Підбір і виготовлення дорожніх знаків для комунальних підприємств, підрядників, ОСББ, паркінгів, підприємств і закупівель. Допомагаємо швидко знайти потрібний номер знака, типорозмір, плівку та комплект кріплення.</p>
-            <div class="category-hero__proofs" aria-label="Переваги">
-              <span class="proof-chip">ДСТУ 4100:2021</span>
-              <span class="proof-chip">Власне виробництво</span>
-              <span class="proof-chip">Плівка 5 / 7 / 10 років</span>
-              <span class="proof-chip">Документи для закупівель</span>
-            </div>
           </div>
 
         </section>
 
         <div class="catalog-head">
           <div>
-            <h2>Попереджувальні дорожні знаки</h2>
-            <p>41 позиція. Оберіть знак або скористайтеся фільтрами за об’єктом і сценарієм використання.</p>
+            <h2>Каталог дорожніх знаків</h2>
+            <p>Оберіть групу ДСТУ, об’єкт або сценарій використання, щоб швидше підібрати потрібний знак.</p>
           </div>
           <label class="catalog-sort">Сортування
             <select aria-label="Сортування товарів">
@@ -3474,7 +3405,6 @@
               <div class="product-card__body">
                 <span class="product-card__code">Знак 1.1</span>
                 <a class="product-card__name" href="znak-1-1-nebezpechnyi-povorot-pravoruch.html">Небезпечний поворот праворуч</a>
-                <span class="product-card__meta">Попереджувальний знак · ДСТУ 4100:2021</span>
               </div>
               <div class="product-card__bottom">
                 <span class="product-card__price">від <strong>550</strong> грн</span>
@@ -3489,7 +3419,6 @@
               <div class="product-card__body">
                 <span class="product-card__code">Знак 1.2</span>
                 <a class="product-card__name" href="#">Небезпечний поворот ліворуч</a>
-                <span class="product-card__meta">Попереджувальний знак · ДСТУ 4100:2021</span>
               </div>
               <div class="product-card__bottom">
                 <span class="product-card__price">від <strong>550</strong> грн</span>
@@ -3504,7 +3433,6 @@
               <div class="product-card__body">
                 <span class="product-card__code">Знак 1.3.1</span>
                 <a class="product-card__name" href="#">Небезпечні повороти, спочатку праворуч</a>
-                <span class="product-card__meta">Попереджувальний знак · ДСТУ 4100:2021</span>
               </div>
               <div class="product-card__bottom">
                 <span class="product-card__price">від <strong>550</strong> грн</span>
@@ -3527,7 +3455,6 @@
               <div class="product-card__body">
                 <span class="product-card__code">Знак 1.4.1</span>
                 <a class="product-card__name" href="#">Напрямок повороту праворуч</a>
-                <span class="product-card__meta">Попереджувальний знак · ДСТУ 4100:2021</span>
               </div>
               <div class="product-card__bottom">
                 <span class="product-card__price">від <strong>550</strong> грн</span>
@@ -3542,7 +3469,6 @@
               <div class="product-card__body">
                 <span class="product-card__code">Знак 2.1</span>
                 <a class="product-card__name" href="#">Дати дорогу</a>
-                <span class="product-card__meta">Знак пріоритету · ДСТУ 4100:2021</span>
               </div>
               <div class="product-card__bottom">
                 <span class="product-card__price">від <strong>550</strong> грн</span>
@@ -3557,7 +3483,6 @@
               <div class="product-card__body">
                 <span class="product-card__code">Знак 3.1</span>
                 <a class="product-card__name" href="#">Рух заборонено</a>
-                <span class="product-card__meta">Заборонний знак · ДСТУ 4100:2021</span>
               </div>
               <div class="product-card__bottom">
                 <span class="product-card__price">від <strong>550</strong> грн</span>
@@ -3572,7 +3497,6 @@
               <div class="product-card__body">
                 <span class="product-card__code">Знак 5.35</span>
                 <a class="product-card__name" href="#">Пішохідний перехід</a>
-                <span class="product-card__meta">Інформаційно-вказівний знак · ДСТУ 4100:2021</span>
               </div>
               <div class="product-card__bottom">
                 <span class="product-card__price">від <strong>550</strong> грн</span>
