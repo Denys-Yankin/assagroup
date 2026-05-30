@@ -2806,6 +2806,45 @@
       font-weight: var(--fw-bold);
     }
 
+    .filter-group--accordion {
+      gap: 0;
+    }
+
+    .filter-group--accordion > summary,
+    .filter-subgroup > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: #1a2230;
+      font-size: var(--fs-small);
+      line-height: 1.2;
+      font-weight: var(--fw-bold);
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .filter-group--accordion > summary::-webkit-details-marker,
+    .filter-subgroup > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .filter-group--accordion > summary::after,
+    .filter-subgroup > summary::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid rgba(6, 71, 146, .72);
+      border-bottom: 2px solid rgba(6, 71, 146, .72);
+      transform: rotate(45deg);
+      transition: transform .18s ease;
+    }
+
+    .filter-group--accordion[open] > summary::after,
+    .filter-subgroup[open] > summary::after {
+      transform: rotate(225deg);
+    }
+
     .filter-check {
       display: flex;
       align-items: center;
@@ -2850,6 +2889,18 @@
       line-height: 1.2;
       font-weight: var(--fw-bold);
       text-transform: uppercase;
+    }
+
+    .filter-subgroup > summary {
+      color: var(--blue);
+      font-size: var(--fs-caption);
+      text-transform: uppercase;
+    }
+
+    .filter-subgroup__items {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
     }
 
     .products-grid {
@@ -3326,7 +3377,13 @@
           <aside class="filter-panel" aria-label="Фільтри товарів">
             <h3>Фільтри</h3>
             <div class="filter-group">
-              <div class="filter-group__title">Об’єкт / місце використання</div>
+              <div class="filter-group__title">ДСТУ</div>
+              <div class="filter-group__content">
+                <label class="filter-check"><input type="checkbox" name="standard" value="dstu-4100-2021"> ДСТУ 4100:2021</label>
+              </div>
+            </div>
+            <details class="filter-group filter-group--accordion" open>
+              <summary>Об’єкт / місце використання</summary>
               <div class="filter-group__content">
                 <label class="filter-check"><input type="checkbox" name="place" value="road"> Дорога / вулиця</label>
                 <label class="filter-check"><input type="checkbox" name="place" value="parking"> Паркінг</label>
@@ -3345,52 +3402,62 @@
                 <label class="filter-check"><input type="checkbox" name="place" value="municipal"> Комунальна територія</label>
                 <label class="filter-check"><input type="checkbox" name="place" value="pedestrian-bike"> Пішохідна / велосипедна зона</label>
               </div>
-            </div>
-            <div class="filter-group">
-              <div class="filter-group__title">Задача / сценарій використання</div>
+            </details>
+            <details class="filter-group filter-group--accordion" open>
+              <summary>Задача / сценарій використання</summary>
               <div class="filter-group__content filter-group__content--scenarios">
-                <div class="filter-subgroup">
-                  <div class="filter-subgroup__title">Паркування</div>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="parking-organize"> Організувати паркування</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="parking-place"> Позначити паркомісце</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="no-parking"> Заборонити стоянку / зупинку</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="accessible-parking"> Позначити місце для людей з інвалідністю</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="ev-charging"> Позначити зарядку електромобіля</label>
-                </div>
+                <details class="filter-subgroup">
+                  <summary>Паркування</summary>
+                  <div class="filter-subgroup__items">
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="parking-organize"> Організувати паркування</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="parking-place"> Позначити паркомісце</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="no-parking"> Заборонити стоянку / зупинку</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="accessible-parking"> Позначити місце для людей з інвалідністю</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="ev-charging"> Позначити зарядку електромобіля</label>
+                  </div>
+                </details>
 
-                <div class="filter-subgroup">
-                  <div class="filter-subgroup__title">В’їзд і рух</div>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="entry-exit"> Організувати в’їзд / виїзд</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="no-entry"> Заборонити в’їзд / проїзд</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="access-control"> Обмежити доступ на територію</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="traffic-direction"> Направити рух транспорту</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="detour"> Організувати об’їзд</label>
-                </div>
+                <details class="filter-subgroup">
+                  <summary>В’їзд та рух</summary>
+                  <div class="filter-subgroup__items">
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="entry-exit"> Організувати в’їзд / виїзд</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="no-entry"> Заборонити в’їзд / проїзд</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="access-control"> Обмежити доступ на територію</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="traffic-direction"> Направити рух транспорту</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="detour"> Організувати об’їзд</label>
+                  </div>
+                </details>
 
-                <div class="filter-subgroup">
-                  <div class="filter-subgroup__title">Безпека</div>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="speed-limit"> Обмежити швидкість</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="warning"> Попередити про небезпеку</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="pedestrian-safety"> Забезпечити пішохідну безпеку</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="children-school"> Попередити про дітей / школу</label>
-                </div>
+                <details class="filter-subgroup">
+                  <summary>Безпека</summary>
+                  <div class="filter-subgroup__items">
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="speed-limit"> Обмежити швидкість</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="warning"> Попередити про небезпеку</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="pedestrian-safety"> Забезпечити пішохідну безпеку</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="children-school"> Попередити про дітей / школу</label>
+                  </div>
+                </details>
 
-                <div class="filter-subgroup">
-                  <div class="filter-subgroup__title">Вантажний транспорт</div>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="freight-traffic"> Організувати рух вантажного транспорту</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="loading-zone"> Позначити зону завантаження / розвантаження</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="height-weight-limit"> Обмежити висоту / вагу транспорту</label>
-                </div>
+                <details class="filter-subgroup">
+                  <summary>Вантажний транспорт</summary>
+                  <div class="filter-subgroup__items">
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="freight-traffic"> Організувати рух вантажного транспорту</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="loading-zone"> Позначити зону завантаження / розвантаження</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="height-weight-limit"> Обмежити висоту / вагу транспорту</label>
+                  </div>
+                </details>
 
-                <div class="filter-subgroup">
-                  <div class="filter-subgroup__title">Територія та тимчасові схеми</div>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="site-traffic"> Організувати рух на території підприємства / складу</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="construction-site"> Позначити будівельний майданчик</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="roadworks-site"> Позначити дорожні роботи</label>
-                  <label class="filter-check"><input type="checkbox" name="scenario" value="temporary-scheme"> Організувати тимчасову схему руху</label>
-                </div>
+                <details class="filter-subgroup">
+                  <summary>Територія та тимчасові схеми</summary>
+                  <div class="filter-subgroup__items">
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="site-traffic"> Організувати рух на території підприємства / складу</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="construction-site"> Позначити будівельний майданчик</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="roadworks-site"> Позначити дорожні роботи</label>
+                    <label class="filter-check"><input type="checkbox" name="scenario" value="temporary-scheme"> Організувати тимчасову схему руху</label>
+                  </div>
+                </details>
               </div>
-            </div>
+            </details>
           </aside>
 
           <div class="products-grid">
