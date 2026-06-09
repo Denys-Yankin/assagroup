@@ -6,11 +6,11 @@
   <title>Виробництво дорожніх знаків і дорожнього обладнання | АССА-ГРУП</title>
   <meta name="description" content="АССА-ГРУП виготовляє дорожні знаки та дорожнє обладнання у Запоріжжі для замовників по всій Україні. Приймаємо запити телефоном або через email.">
   <meta name="robots" content="index, follow">
-  <link rel="preload" as="image" href="assets/dorozhni-znaky-hero-720.webp" imagesrcset="assets/dorozhni-znaky-hero-480.webp 480w, assets/dorozhni-znaky-hero-720.webp 720w" imagesizes="(max-width: 720px) 358px, 488px" type="image/webp">
+  <link rel="preload" as="image" href="assets/dorozhni-znaky-hero-720.webp" imagesrcset="assets/dorozhni-znaky-hero-480.webp 480w, assets/dorozhni-znaky-hero-720.webp 720w" imagesizes="(max-width: 520px) calc(100vw - 30px), (max-width: 980px) calc(100vw - 60px), 456px" type="image/webp">
   <style>
     :root {
       --blue: #064792;
-      --blue-dark: #05366f;
+      --blue-dark: #003b82;
       --blue-soft: #eaf2ff;
       --red: #e30016;
       --red-soft: #fff3f4;
@@ -19,7 +19,7 @@
       --line: #dce5f1;
       --panel: #f5f8fc;
       --white: #fff;
-      --shadow: 0 18px 42px rgba(17, 31, 52, .10);
+      --shadow: 0 14px 32px rgba(17, 31, 52, .10);
       --radius: 8px;
       --font: "Segoe UI", Roboto, Arial, sans-serif;
     }
@@ -66,7 +66,7 @@
     }
 
     .container {
-      width: min(1120px, calc(100% - 32px));
+      width: min(1026px, calc(100% - 60px));
       margin: 0 auto;
     }
 
@@ -75,8 +75,7 @@
       top: 0;
       z-index: 20;
       border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, .94);
-      backdrop-filter: blur(12px);
+      background: var(--white);
     }
 
     .header__inner {
@@ -84,7 +83,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      padding: 14px 0;
+      padding: 17px 0 13px;
     }
 
     .brand {
@@ -114,10 +113,10 @@
 
     .brand__caption {
       display: block;
-      margin-top: 4px;
-      color: #334155;
+      margin-top: 3px;
+      color: var(--blue);
       font-size: 12px;
-      line-height: 1.15;
+      line-height: 1.05;
       font-weight: 800;
       text-transform: uppercase;
     }
@@ -146,13 +145,13 @@
     }
 
     .hero {
-      padding: 70px 0 44px;
+      padding: 58px 0 38px;
     }
 
     .hero__grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, 488px);
-      gap: 46px;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 456px);
+      gap: 38px;
       align-items: center;
     }
 
@@ -185,11 +184,11 @@
     }
 
     h1 {
-      max-width: 690px;
+      max-width: 650px;
       margin-bottom: 20px;
       color: #07111f;
-      font-size: clamp(34px, 4.8vw, 58px);
-      line-height: 1.03;
+      font-size: clamp(32px, 4.2vw, 52px);
+      line-height: 1.06;
       font-weight: 900;
       letter-spacing: 0;
     }
@@ -198,7 +197,7 @@
       max-width: 620px;
       margin-bottom: 0;
       color: var(--muted);
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.58;
       font-weight: 500;
       overflow-wrap: break-word;
@@ -208,7 +207,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 30px;
+      margin-top: 26px;
     }
 
     .button {
@@ -223,7 +222,6 @@
       line-height: 1.1;
       font-weight: 900;
       text-align: center;
-      text-transform: uppercase;
     }
 
     .button--primary {
@@ -340,8 +338,8 @@
     }
 
     .trust__item {
-      min-height: 128px;
-      padding: 20px;
+      min-height: 118px;
+      padding: 18px;
     }
 
     .trust__item strong,
@@ -365,7 +363,7 @@
     }
 
     .section {
-      padding: 58px 0;
+      padding: 52px 0;
     }
 
     .section--panel {
@@ -382,7 +380,7 @@
     .contact h2 {
       margin-bottom: 12px;
       color: #07111f;
-      font-size: clamp(27px, 3.2vw, 38px);
+      font-size: clamp(26px, 3vw, 34px);
       line-height: 1.1;
       font-weight: 900;
       letter-spacing: 0;
@@ -406,8 +404,8 @@
     }
 
     .product-card {
-      min-height: 184px;
-      padding: 20px;
+      min-height: 166px;
+      padding: 18px;
     }
 
     .product-card__mark {
@@ -415,7 +413,7 @@
       place-items: center;
       width: 42px;
       height: 42px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       border-radius: var(--radius);
       color: var(--blue);
       background: var(--blue-soft);
@@ -444,7 +442,7 @@
     .operations h2 {
       margin-bottom: 12px;
       color: #07111f;
-      font-size: clamp(27px, 3.2vw, 38px);
+      font-size: clamp(26px, 3vw, 34px);
       line-height: 1.1;
       font-weight: 900;
       letter-spacing: 0;
@@ -506,7 +504,7 @@
     .operations__status h3 {
       margin: 0 0 12px;
       color: var(--white);
-      font-size: 27px;
+      font-size: 24px;
       line-height: 1.12;
       font-weight: 900;
       letter-spacing: 0;
@@ -543,7 +541,7 @@
     }
 
     .contact {
-      padding: 34px;
+      padding: 30px;
       border-radius: var(--radius);
       color: var(--white);
       background:
@@ -658,7 +656,7 @@
       }
 
       .hero {
-        padding: 44px 0 34px;
+        padding: 40px 0 30px;
       }
 
       h1 {
@@ -688,7 +686,7 @@
       }
 
       .section {
-        padding: 44px 0;
+        padding: 40px 0;
       }
 
       .tender,
@@ -712,7 +710,7 @@
         left: 0;
         z-index: 30;
         display: grid;
-        grid-template-columns: 1.15fr .85fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
         padding: 10px 12px;
         border-top: 1px solid var(--line);
@@ -724,11 +722,11 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        min-width: 0;
         min-height: 48px;
         border-radius: var(--radius);
         font-size: 14px;
         font-weight: 900;
-        text-transform: uppercase;
       }
 
       .mobile-bar__phone {
@@ -746,7 +744,7 @@
 
     @media (max-width: 520px) {
       .container {
-        width: min(358px, calc(100% - 32px));
+        width: min(360px, calc(100% - 30px));
       }
     }
   </style>
@@ -805,7 +803,7 @@
 
             <figure class="hero__photo" aria-label="Фото дорожніх знаків АССА-ГРУП">
               <picture>
-                <source type="image/webp" srcset="assets/dorozhni-znaky-hero-480.webp 480w, assets/dorozhni-znaky-hero-720.webp 720w" sizes="(max-width: 720px) 358px, 488px">
+                <source type="image/webp" srcset="assets/dorozhni-znaky-hero-480.webp 480w, assets/dorozhni-znaky-hero-720.webp 720w" sizes="(max-width: 520px) calc(100vw - 30px), (max-width: 980px) calc(100vw - 60px), 456px">
                 <img src="assets/dorozhni-znaky-hero-720.jpg" alt="Готові дорожні знаки АССА-ГРУП" width="720" height="900" decoding="async" fetchpriority="high" onerror="this.closest('.hero__photo').classList.add('hero__photo--empty'); this.closest('picture').remove();">
               </picture>
               <figcaption class="photo-placeholder">
