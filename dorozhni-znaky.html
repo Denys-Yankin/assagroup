@@ -243,6 +243,50 @@
       place-items: center;
     }
 
+    .header-selection {
+      position: relative;
+      display: inline-grid;
+      width: 44px;
+      height: 40px;
+      flex: 0 0 44px;
+      border: 1px solid rgba(6, 71, 146, .28);
+      border-radius: 7px;
+      color: var(--blue);
+      background: #fff;
+      place-items: center;
+    }
+
+    .header-selection__icon {
+      width: 23px;
+      height: 23px;
+      background: currentColor;
+      -webkit-mask: url("https://cdn.jsdelivr.net/npm/lucide-static@0.563.0/icons/heart.svg") center / contain no-repeat;
+      mask: url("https://cdn.jsdelivr.net/npm/lucide-static@0.563.0/icons/heart.svg") center / contain no-repeat;
+    }
+
+    .selection-count {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      display: grid;
+      min-width: 19px;
+      height: 19px;
+      padding: 0 5px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--red);
+      font-size: 10px;
+      line-height: 1;
+      font-weight: var(--fw-black);
+      place-items: center;
+      box-shadow: 0 6px 14px rgba(227, 0, 22, .20);
+    }
+
+    .selection-count:empty {
+      display: none;
+    }
+
     .header-cart .icon {
       width: 25px;
       height: 25px;
@@ -2383,7 +2427,7 @@
       }
 
       .header-cart {
-        grid-column: 5;
+        grid-column: 6;
         grid-row: 1;
         width: 34px;
         height: 34px;
@@ -2428,7 +2472,7 @@
       }
 
       .header__main {
-        grid-template-columns: auto minmax(0, 1fr) 34px 34px 34px;
+        grid-template-columns: auto minmax(0, 1fr) 34px 34px 34px 34px;
         gap: 8px 8px;
         padding-right: 28px;
       }
@@ -2445,6 +2489,33 @@
       .header-menu {
         grid-column: 4;
         grid-row: 1;
+      }
+
+      .header-selection {
+        grid-column: 5;
+        grid-row: 1;
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+        border-color: rgba(6, 71, 146, .16);
+        border-radius: 10px;
+        color: var(--blue);
+        background: linear-gradient(180deg, #f8fbff 0%, #eaf2ff 100%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .75), 0 5px 12px rgba(6, 71, 146, .12);
+      }
+
+      .header-selection__icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      .selection-count {
+        top: -6px;
+        right: -6px;
+        min-width: 17px;
+        height: 17px;
+        padding: 0 4px;
+        font-size: 9px;
       }
 
       .consult-button {
@@ -2559,10 +2630,11 @@
       }
 
       .header__main {
-        grid-template-columns: auto minmax(0, 1fr) 33px 33px 33px;
+        grid-template-columns: auto minmax(0, 1fr) 33px 33px 33px 33px;
         gap: 8px 6px;
       }
 
+      .header-selection,
       .header-cart,
       .header-icon-button {
         width: 33px;
@@ -3063,6 +3135,7 @@
     }
 
     .product-card {
+      position: relative;
       display: grid;
       grid-template-rows: auto 1fr auto;
       min-height: 100%;
@@ -3090,6 +3163,75 @@
       place-items: center;
       min-height: 168px;
       background: linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
+    }
+
+    .product-card__favorite {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(6, 71, 146, .16);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .92);
+      color: #52657c;
+      box-shadow: 0 10px 24px rgba(17, 31, 52, .10);
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease;
+    }
+
+    .product-card__favorite-icon {
+      width: 18px;
+      height: 18px;
+      background: currentColor;
+      -webkit-mask: url("https://cdn.jsdelivr.net/npm/lucide-static@0.563.0/icons/heart.svg") center / contain no-repeat;
+      mask: url("https://cdn.jsdelivr.net/npm/lucide-static@0.563.0/icons/heart.svg") center / contain no-repeat;
+      transition: transform .18s ease;
+    }
+
+    .product-card__favorite:hover {
+      border-color: rgba(6, 71, 146, .38);
+      color: var(--blue);
+      box-shadow: 0 14px 30px rgba(17, 31, 52, .14);
+      transform: translateY(-1px);
+    }
+
+    .product-card__favorite[aria-pressed="true"] {
+      border-color: rgba(227, 0, 22, .32);
+      color: var(--red);
+    }
+
+    .product-card__favorite[aria-pressed="true"] .product-card__favorite-icon {
+      transform: scale(1.05);
+    }
+
+    .selection-toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 30;
+      max-width: min(360px, calc(100vw - 32px));
+      padding: 13px 16px;
+      border: 1px solid rgba(6, 71, 146, .18);
+      border-radius: 12px;
+      color: #fff;
+      background: #0b2f5f;
+      font-size: var(--fs-small);
+      line-height: 1.35;
+      font-weight: var(--fw-bold);
+      box-shadow: 0 18px 42px rgba(17, 31, 52, .22);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .selection-toast.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .sign-preview {
@@ -3464,6 +3606,11 @@
         min-width: 0;
         padding: 0 10px;
       }
+
+      .selection-toast {
+        right: 15px;
+        bottom: 15px;
+      }
     }
 
   </style>
@@ -3519,6 +3666,10 @@
               <a class="consult-button" href="#">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.4 2.1L8 9.6a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9z"/></svg>
                 <span>Отримати консультацію</span>
+              </a>
+              <a class="header-selection" href="spysok-pidboru.html" aria-label="Список підбору">
+                <span class="header-selection__icon" aria-hidden="true"></span>
+                <span class="selection-count" data-selection-count></span>
               </a>
               <a class="header-cart" href="#" aria-label="Кошик">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/></svg>
@@ -3694,6 +3845,9 @@
                 <a class="product-card__visual" href="znak-1-1-nebezpechnyi-povorot-pravoruch.html" aria-label="Знак 1.1 Небезпечний поворот праворуч">
                   <span class="sign-preview sign-preview--triangle"><strong>1.1</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.1</span>
                   <a class="product-card__name" href="znak-1-1-nebezpechnyi-povorot-pravoruch.html">Небезпечний поворот праворуч</a>
@@ -3708,6 +3862,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.2 Небезпечний поворот ліворуч">
                   <span class="sign-preview sign-preview--triangle"><strong>1.2</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.2</span>
                   <a class="product-card__name" href="#">Небезпечний поворот ліворуч</a>
@@ -3722,6 +3879,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.3.1 Небезпечні повороти, спочатку праворуч">
                   <span class="sign-preview sign-preview--triangle"><strong>1.3.1</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.3.1</span>
                   <a class="product-card__name" href="#">Небезпечні повороти, спочатку праворуч</a>
@@ -3744,6 +3904,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.3.2 Небезпечні повороти, спочатку ліворуч">
                   <span class="sign-preview sign-preview--triangle"><strong>1.3.2</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.3.2</span>
                   <a class="product-card__name" href="#">Небезпечні повороти, спочатку ліворуч</a>
@@ -3758,6 +3921,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.4.1 Напрямок повороту праворуч">
                   <span class="sign-preview sign-preview--triangle"><strong>1.4.1</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.4.1</span>
                   <a class="product-card__name" href="#">Напрямок повороту праворуч</a>
@@ -3772,6 +3938,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.4.2 Напрямок повороту ліворуч">
                   <span class="sign-preview sign-preview--triangle"><strong>1.4.2</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.4.2</span>
                   <a class="product-card__name" href="#">Напрямок повороту ліворуч</a>
@@ -3786,6 +3955,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.5.1 Звуження дороги">
                   <span class="sign-preview sign-preview--triangle"><strong>1.5.1</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.5.1</span>
                   <a class="product-card__name" href="#">Звуження дороги</a>
@@ -3800,6 +3972,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.5.2 Звуження дороги праворуч">
                   <span class="sign-preview sign-preview--triangle"><strong>1.5.2</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.5.2</span>
                   <a class="product-card__name" href="#">Звуження дороги праворуч</a>
@@ -3814,6 +3989,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.5.3 Звуження дороги ліворуч">
                   <span class="sign-preview sign-preview--triangle"><strong>1.5.3</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.5.3</span>
                   <a class="product-card__name" href="#">Звуження дороги ліворуч</a>
@@ -3828,6 +4006,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.6 Крутий підйом">
                   <span class="sign-preview sign-preview--triangle"><strong>1.6</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.6</span>
                   <a class="product-card__name" href="#">Крутий підйом</a>
@@ -3842,6 +4023,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.7 Крутий спуск">
                   <span class="sign-preview sign-preview--triangle"><strong>1.7</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.7</span>
                   <a class="product-card__name" href="#">Крутий спуск</a>
@@ -3856,6 +4040,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.8 Виїзд на набережну або берег">
                   <span class="sign-preview sign-preview--triangle"><strong>1.8</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.8</span>
                   <a class="product-card__name" href="#">Виїзд на набережну або берег</a>
@@ -3870,6 +4057,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.9 Тунель">
                   <span class="sign-preview sign-preview--triangle"><strong>1.9</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.9</span>
                   <a class="product-card__name" href="#">Тунель</a>
@@ -3884,6 +4074,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.10 Нерівна дорога">
                   <span class="sign-preview sign-preview--triangle"><strong>1.10</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.10</span>
                   <a class="product-card__name" href="#">Нерівна дорога</a>
@@ -3898,6 +4091,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.11 Пагорб">
                   <span class="sign-preview sign-preview--triangle"><strong>1.11</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.11</span>
                   <a class="product-card__name" href="#">Пагорб</a>
@@ -3912,6 +4108,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.12 Вибоїна">
                   <span class="sign-preview sign-preview--triangle"><strong>1.12</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.12</span>
                   <a class="product-card__name" href="#">Вибоїна</a>
@@ -3926,6 +4125,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 1.13 Слизька дорога">
                   <span class="sign-preview sign-preview--triangle"><strong>1.13</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 1.13</span>
                   <a class="product-card__name" href="#">Слизька дорога</a>
@@ -3940,6 +4142,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 2.1 Дати дорогу">
                   <span class="sign-preview sign-preview--diamond"><strong>2.1</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 2.1</span>
                   <a class="product-card__name" href="#">Дати дорогу</a>
@@ -3954,6 +4159,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 3.1 Рух заборонено">
                   <span class="sign-preview sign-preview--circle"><strong>3.1</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 3.1</span>
                   <a class="product-card__name" href="#">Рух заборонено</a>
@@ -3968,6 +4176,9 @@
                 <a class="product-card__visual" href="#" aria-label="Знак 5.35 Пішохідний перехід">
                   <span class="sign-preview sign-preview--square"><strong>5.35</strong></span>
                 </a>
+                <button class="product-card__favorite" type="button" aria-label="Додати в обране" aria-pressed="false">
+                  <span class="product-card__favorite-icon" aria-hidden="true"></span>
+                </button>
                 <div class="product-card__body">
                   <span class="product-card__code">Знак 5.35</span>
                   <a class="product-card__name" href="#">Пішохідний перехід</a>
@@ -4065,6 +4276,7 @@
       </div>
     </footer>
   </div>
+  <div class="selection-toast" role="status" aria-live="polite" hidden></div>
   <script>
     const serviceItems = document.querySelectorAll(".feature");
 
@@ -4212,6 +4424,113 @@
     }
 
     const productCards = Array.from(document.querySelectorAll(".products-grid .product-card"));
+    const selectionStorageKey = "assaSelectionList";
+    const selectionCountNodes = document.querySelectorAll("[data-selection-count]");
+    const selectionToast = document.querySelector(".selection-toast");
+    const favoriteButtons = document.querySelectorAll(".product-card__favorite");
+    let selectionToastTimer;
+
+    const getSelectionList = () => {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(selectionStorageKey) || "[]");
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        return [];
+      }
+    };
+
+    const saveSelectionList = (items) => {
+      localStorage.setItem(selectionStorageKey, JSON.stringify(items));
+    };
+
+    const updateSelectionCount = () => {
+      const count = getSelectionList().length;
+      selectionCountNodes.forEach((node) => {
+        node.textContent = count ? String(count) : "";
+      });
+    };
+
+    const showSelectionToast = (message) => {
+      if (!selectionToast) return;
+
+      window.clearTimeout(selectionToastTimer);
+      selectionToast.textContent = message;
+      selectionToast.hidden = false;
+      requestAnimationFrame(() => selectionToast.classList.add("is-visible"));
+
+      selectionToastTimer = window.setTimeout(() => {
+        selectionToast.classList.remove("is-visible");
+        window.setTimeout(() => {
+          selectionToast.hidden = true;
+        }, 200);
+      }, 2300);
+    };
+
+    const getProductFromCard = (card) => {
+      const productName = card?.querySelector(".product-card__name")?.textContent?.trim();
+      const productCode = card?.querySelector(".product-card__code")?.textContent?.trim();
+      const productPrice = card?.querySelector(".product-card__price")?.textContent?.replace(/\s+/g, " ")?.trim();
+      const productLink = card?.querySelector(".product-card__name")?.getAttribute("href") || "#";
+      const signPreview = card?.querySelector(".sign-preview");
+      const signType = signPreview ? Array.from(signPreview.classList).filter((name) => name !== "sign-preview").join(" ") : "";
+      const signLabel = signPreview?.querySelector("strong")?.textContent?.trim() || productCode?.replace("Знак ", "") || "";
+
+      return {
+        id: productCode || productName,
+        code: productCode,
+        name: productName,
+        price: productPrice,
+        url: productLink,
+        signType,
+        signLabel
+      };
+    };
+
+    const syncFavoriteButtons = () => {
+      const selectedIds = new Set(getSelectionList().map((item) => item.id));
+
+      favoriteButtons.forEach((button) => {
+        const product = getProductFromCard(button.closest(".product-card"));
+        const isSelected = selectedIds.has(product.id);
+        const label = [product.code, product.name].filter(Boolean).join(" ");
+
+        button.setAttribute("aria-pressed", String(isSelected));
+        button.setAttribute("aria-label", `${isSelected ? "Прибрати зі списку підбору" : "Додати до списку підбору"}: ${label}`);
+      });
+    };
+
+    favoriteButtons.forEach((button) => {
+      const product = getProductFromCard(button.closest(".product-card"));
+      const productName = product.name;
+      const productCode = product.code;
+      const label = [productCode, productName].filter(Boolean).join(" ");
+
+      if (label) {
+        button.setAttribute("aria-label", `Додати до списку підбору: ${label}`);
+      }
+
+      button.addEventListener("click", () => {
+        const currentList = getSelectionList();
+        const existingIndex = currentList.findIndex((item) => item.id === product.id);
+
+        if (existingIndex >= 0) {
+          currentList.splice(existingIndex, 1);
+          saveSelectionList(currentList);
+          showSelectionToast("Прибрано зі списку підбору");
+        } else {
+          currentList.push({ ...product, addedAt: new Date().toISOString() });
+          saveSelectionList(currentList);
+          showSelectionToast("Додано до списку підбору");
+        }
+
+        updateSelectionCount();
+        syncFavoriteButtons();
+      });
+    });
+
+    updateSelectionCount();
+    syncFavoriteButtons();
+
     const pageSizeSelect = document.querySelector(".page-size-select");
     const pagination = document.querySelector(".catalog-pagination");
 
@@ -4284,4 +4603,6 @@
   </script>
 </body>
 </html>
+
+
 

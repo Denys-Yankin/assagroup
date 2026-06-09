@@ -243,6 +243,50 @@
       place-items: center;
     }
 
+    .header-selection {
+      position: relative;
+      display: inline-grid;
+      width: 44px;
+      height: 40px;
+      flex: 0 0 44px;
+      border: 1px solid rgba(6, 71, 146, .28);
+      border-radius: 7px;
+      color: var(--blue);
+      background: #fff;
+      place-items: center;
+    }
+
+    .header-selection__icon {
+      width: 23px;
+      height: 23px;
+      background: currentColor;
+      -webkit-mask: url("https://cdn.jsdelivr.net/npm/lucide-static@0.563.0/icons/heart.svg") center / contain no-repeat;
+      mask: url("https://cdn.jsdelivr.net/npm/lucide-static@0.563.0/icons/heart.svg") center / contain no-repeat;
+    }
+
+    .selection-count {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      display: grid;
+      min-width: 19px;
+      height: 19px;
+      padding: 0 5px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--red);
+      font-size: 10px;
+      line-height: 1;
+      font-weight: var(--fw-black);
+      place-items: center;
+      box-shadow: 0 6px 14px rgba(227, 0, 22, .20);
+    }
+
+    .selection-count:empty {
+      display: none;
+    }
+
     .header-cart .icon {
       width: 25px;
       height: 25px;
@@ -753,6 +797,38 @@
       font-weight: var(--fw-black);
       text-transform: uppercase;
       cursor: pointer;
+    }
+
+    .favorite[aria-pressed="true"] {
+      border-color: rgba(227, 0, 22, .42);
+      color: var(--red);
+      background: rgba(227, 0, 22, .04);
+    }
+
+    .selection-toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 30;
+      max-width: min(360px, calc(100vw - 32px));
+      padding: 13px 16px;
+      border: 1px solid rgba(6, 71, 146, .18);
+      border-radius: 12px;
+      color: #fff;
+      background: #0b2f5f;
+      font-size: var(--fs-small);
+      line-height: 1.35;
+      font-weight: var(--fw-bold);
+      box-shadow: 0 18px 42px rgba(17, 31, 52, .22);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+
+    .selection-toast.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .product__bar {
@@ -2383,7 +2459,7 @@
       }
 
       .header-cart {
-        grid-column: 5;
+        grid-column: 6;
         grid-row: 1;
         width: 34px;
         height: 34px;
@@ -2428,7 +2504,7 @@
       }
 
       .header__main {
-        grid-template-columns: auto minmax(0, 1fr) 34px 34px 34px;
+        grid-template-columns: auto minmax(0, 1fr) 34px 34px 34px 34px;
         gap: 8px 8px;
         padding-right: 28px;
       }
@@ -2445,6 +2521,38 @@
       .header-menu {
         grid-column: 4;
         grid-row: 1;
+      }
+
+      .header-selection {
+        grid-column: 5;
+        grid-row: 1;
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+        border-color: rgba(6, 71, 146, .16);
+        border-radius: 10px;
+        color: var(--blue);
+        background: linear-gradient(180deg, #f8fbff 0%, #eaf2ff 100%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .75), 0 5px 12px rgba(6, 71, 146, .12);
+      }
+
+      .header-selection__icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      .selection-count {
+        top: -6px;
+        right: -6px;
+        min-width: 17px;
+        height: 17px;
+        padding: 0 4px;
+        font-size: 9px;
+      }
+
+      .selection-toast {
+        right: 15px;
+        bottom: 15px;
       }
 
       .consult-button {
@@ -2559,10 +2667,11 @@
       }
 
       .header__main {
-        grid-template-columns: auto minmax(0, 1fr) 33px 33px 33px;
+        grid-template-columns: auto minmax(0, 1fr) 33px 33px 33px 33px;
         gap: 8px 6px;
       }
 
+      .header-selection,
       .header-cart,
       .header-icon-button {
         width: 33px;
@@ -2638,6 +2747,10 @@
               <a class="consult-button" href="#">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.4 2.1L8 9.6a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9z"/></svg>
                 <span>Отримати консультацію</span>
+              </a>
+              <a class="header-selection" href="spysok-pidboru.html" aria-label="Список підбору">
+                <span class="header-selection__icon" aria-hidden="true"></span>
+                <span class="selection-count" data-selection-count></span>
               </a>
               <a class="header-cart" href="#" aria-label="Кошик">
                 <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/></svg>
@@ -2783,7 +2896,7 @@
               <button class="buy" type="button">
                 Придбати
               </button>
-              <button class="favorite" type="button">
+              <button class="favorite" type="button" aria-pressed="false">
                 Додати в обране
               </button>
             </div>
@@ -3047,6 +3160,7 @@
       </div>
     </footer>
   </div>
+  <div class="selection-toast" role="status" aria-live="polite" hidden></div>
   <script>
     const serviceItems = document.querySelectorAll(".feature");
 
@@ -3073,6 +3187,87 @@
         item.open = false;
       });
     });
+
+    const selectionStorageKey = "assaSelectionList";
+    const selectionCountNodes = document.querySelectorAll("[data-selection-count]");
+    const selectionToast = document.querySelector(".selection-toast");
+    const productFavoriteButton = document.querySelector(".favorite");
+    let selectionToastTimer;
+
+    const getSelectionList = () => {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(selectionStorageKey) || "[]");
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        return [];
+      }
+    };
+
+    const saveSelectionList = (items) => {
+      localStorage.setItem(selectionStorageKey, JSON.stringify(items));
+    };
+
+    const updateSelectionCount = () => {
+      const count = getSelectionList().length;
+      selectionCountNodes.forEach((node) => {
+        node.textContent = count ? String(count) : "";
+      });
+    };
+
+    const showSelectionToast = (message) => {
+      if (!selectionToast) return;
+
+      window.clearTimeout(selectionToastTimer);
+      selectionToast.textContent = message;
+      selectionToast.hidden = false;
+      requestAnimationFrame(() => selectionToast.classList.add("is-visible"));
+
+      selectionToastTimer = window.setTimeout(() => {
+        selectionToast.classList.remove("is-visible");
+        window.setTimeout(() => {
+          selectionToast.hidden = true;
+        }, 200);
+      }, 2300);
+    };
+
+    const productForSelection = {
+      id: "Знак 1.1",
+      code: "Знак 1.1",
+      name: document.querySelector("#product-title")?.textContent?.replace("Знак 1.1 ", "")?.trim() || "Небезпечний поворот праворуч",
+      price: document.querySelector(".price")?.textContent?.replace(/\s+/g, " ")?.trim() || "від 550 грн",
+      url: "znak-1-1-nebezpechnyi-povorot-pravoruch.html",
+      signType: "sign-preview--triangle",
+      signLabel: "1.1"
+    };
+
+    const syncProductFavorite = () => {
+      if (!productFavoriteButton) return;
+
+      const isSelected = getSelectionList().some((item) => item.id === productForSelection.id);
+      productFavoriteButton.setAttribute("aria-pressed", String(isSelected));
+      productFavoriteButton.textContent = isSelected ? "У списку підбору" : "Додати в обране";
+    };
+
+    productFavoriteButton?.addEventListener("click", () => {
+      const currentList = getSelectionList();
+      const existingIndex = currentList.findIndex((item) => item.id === productForSelection.id);
+
+      if (existingIndex >= 0) {
+        currentList.splice(existingIndex, 1);
+        saveSelectionList(currentList);
+        showSelectionToast("Прибрано зі списку підбору");
+      } else {
+        currentList.push({ ...productForSelection, addedAt: new Date().toISOString() });
+        saveSelectionList(currentList);
+        showSelectionToast("Додано до списку підбору");
+      }
+
+      updateSelectionCount();
+      syncProductFavorite();
+    });
+
+    updateSelectionCount();
+    syncProductFavorite();
   </script>
 </body>
 </html>

@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список підбору - АССА-ГРУП</title>
+  <style>
+    :root {
+      --blue: #064792;
+      --blue-dark: #04336d;
+      --red: #e30016;
+      --yellow: #ffd400;
+      --text: #07101f;
+      --muted: #59677a;
+      --line: #dce4ee;
+      --soft: #f5f8fb;
+      --fw-regular: 400;
+      --fw-semibold: 600;
+      --fw-bold: 700;
+      --fw-black: 800;
+      --fs-caption: 12px;
+      --fs-small: 13px;
+      --fs-body: 14px;
+      --fs-control: 15px;
+      --fs-section: 22px;
+      --fs-title: 32px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: var(--fs-body);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1026px, calc(100% - 60px));
+      margin: 0 auto;
+    }
+
+    .icon {
+      width: 23px;
+      height: 23px;
+      flex: 0 0 auto;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .header {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .header__main {
+      display: grid;
+      grid-template-columns: 270px minmax(280px, 1fr) auto;
+      gap: 22px;
+      align-items: center;
+      padding: 17px 0 13px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand__mark {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+    }
+
+    .brand__name {
+      display: block;
+      color: var(--blue);
+      font-size: 21px;
+      line-height: 1;
+      font-weight: var(--fw-black);
+      letter-spacing: 0;
+    }
+
+    .brand__caption {
+      display: grid;
+      gap: 1px;
+      margin-top: 4px;
+      color: var(--blue);
+      font-size: var(--fs-caption);
+      line-height: 1.05;
+      font-weight: var(--fw-black);
+      text-transform: uppercase;
+    }
+
+    .search {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 54px;
+      min-width: 0;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .search input {
+      min-width: 0;
+      border: 0;
+      padding: 0 16px;
+      outline: 0;
+      color: var(--text);
+    }
+
+    .search button {
+      display: grid;
+      border: 0;
+      color: #fff;
+      background: var(--blue);
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .header__actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      color: var(--blue);
+    }
+
+    .header-phone {
+      color: var(--text);
+      font-size: var(--fs-control);
+      font-weight: var(--fw-bold);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .consult-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      gap: 8px;
+      padding: 0 15px;
+      border-radius: 7px;
+      color: #fff;
+      background: var(--blue);
+      font-size: var(--fs-body);
+      font-weight: var(--fw-bold);
+      white-space: nowrap;
+      box-shadow: 0 7px 15px rgba(6, 71, 146, .14);
+    }
+
+    .consult-button .icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .header__cta-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-selection,
+    .header-cart {
+      position: relative;
+      display: grid;
+      width: 44px;
+      height: 40px;
+      flex: 0 0 44px;
+      border: 1px solid rgba(6, 71, 146, .28);
+      border-radius: 7px;
+      color: var(--blue);
+      background: #fff;
+      place-items: center;
+    }
+
+    .header-selection__icon {
+      width: 23px;
+      height: 23px;
+      background: currentColor;
+      -webkit-mask: url("https://cdn.jsdelivr.net/npm/lucide-static@0.563.0/icons/heart.svg") center / contain no-repeat;
+      mask: url("https://cdn.jsdelivr.net/npm/lucide-static@0.563.0/icons/heart.svg") center / contain no-repeat;
+    }
+
+    .selection-count {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      display: grid;
+      min-width: 19px;
+      height: 19px;
+      padding: 0 5px;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--red);
+      font-size: 10px;
+      line-height: 1;
+      font-weight: var(--fw-black);
+      place-items: center;
+      box-shadow: 0 6px 14px rgba(227, 0, 22, .20);
+    }
+
+    .selection-count:empty {
+      display: none;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      padding: 0 0 12px;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+      color: var(--text);
+      font-size: var(--fs-small);
+      font-weight: var(--fw-black);
+    }
+
+    .nav__links a {
+      position: relative;
+      padding: 9px 0;
+    }
+
+    .nav__links a:hover,
+    .nav__links a.is-active {
+      color: var(--blue);
+    }
+
+    .selection-main {
+      padding: 34px 0 60px;
+      background: linear-gradient(180deg, #fff 0%, #f7f9fc 100%);
+    }
+
+    .selection-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: var(--fs-title);
+      line-height: 1.08;
+      font-weight: var(--fw-black);
+      letter-spacing: 0;
+    }
+
+    .selection-hero p {
+      max-width: 690px;
+      margin: 0;
+      color: var(--muted);
+      font-size: var(--fs-control);
+      line-height: 1.55;
+      font-weight: var(--fw-semibold);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid rgba(6, 71, 146, .22);
+      border-radius: 8px;
+      color: var(--blue);
+      background: #fff;
+      font-size: var(--fs-small);
+      font-weight: var(--fw-black);
+      white-space: nowrap;
+    }
+
+    .selection-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .selection-list,
+    .selection-aside {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 16px 36px rgba(17, 31, 52, .06);
+    }
+
+    .selection-list {
+      overflow: hidden;
+    }
+
+    .selection-list__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .selection-list__title {
+      margin: 0;
+      font-size: var(--fs-section);
+      line-height: 1.15;
+      font-weight: var(--fw-black);
+    }
+
+    .selection-list__meta {
+      color: var(--muted);
+      font-size: var(--fs-small);
+      font-weight: var(--fw-bold);
+      white-space: nowrap;
+    }
+
+    .selection-items {
+      display: grid;
+    }
+
+    .selection-item {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .selection-item:last-child {
+      border-bottom: 0;
+    }
+
+    .sign-preview {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      filter: drop-shadow(0 8px 12px rgba(17, 31, 52, .16));
+    }
+
+    .sign-preview::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #fff;
+    }
+
+    .sign-preview strong {
+      position: relative;
+      z-index: 2;
+      color: #111827;
+      font-size: var(--fs-small);
+      font-weight: var(--fw-black);
+    }
+
+    .sign-preview--triangle::before {
+      clip-path: polygon(50% 4%, 97% 92%, 3% 92%);
+      box-shadow: inset 0 0 0 8px var(--red);
+    }
+
+    .sign-preview--circle::before {
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 8px var(--red);
+    }
+
+    .sign-preview--diamond::before {
+      transform: rotate(45deg) scale(.78);
+      border: 8px solid var(--yellow);
+      box-sizing: border-box;
+    }
+
+    .sign-preview--square::before {
+      border-radius: 8px;
+      box-shadow: inset 0 0 0 7px var(--blue);
+    }
+
+    .selection-item__code {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--blue);
+      font-size: var(--fs-caption);
+      line-height: 1;
+      font-weight: var(--fw-bold);
+      text-transform: uppercase;
+    }
+
+    .selection-item__name {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: var(--fs-control);
+      line-height: 1.25;
+      font-weight: var(--fw-black);
+    }
+
+    .selection-item__price {
+      color: var(--text);
+      font-size: var(--fs-small);
+      font-weight: var(--fw-bold);
+    }
+
+    .selection-item__actions {
+      display: grid;
+      gap: 8px;
+      justify-items: end;
+    }
+
+    .selection-item__link,
+    .selection-item__remove {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 8px;
+      font-size: var(--fs-small);
+      font-weight: var(--fw-black);
+      white-space: nowrap;
+    }
+
+    .selection-item__link {
+      color: #fff;
+      background: var(--blue);
+    }
+
+    .selection-item__remove {
+      border: 1px solid rgba(6, 71, 146, .18);
+      color: var(--muted);
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .selection-aside {
+      display: grid;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .selection-aside h2 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.18;
+      font-weight: var(--fw-black);
+    }
+
+    .selection-aside p {
+      margin: 0;
+      color: var(--muted);
+      font-size: var(--fs-small);
+      line-height: 1.5;
+      font-weight: var(--fw-semibold);
+    }
+
+    .aside-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .primary-action,
+    .secondary-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 8px;
+      font-size: var(--fs-small);
+      font-weight: var(--fw-black);
+      text-align: center;
+    }
+
+    .primary-action {
+      color: #fff;
+      background: var(--blue);
+    }
+
+    .secondary-action {
+      border: 1px solid rgba(6, 71, 146, .20);
+      color: var(--blue);
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .empty-state {
+      display: grid;
+      place-items: center;
+      min-height: 260px;
+      padding: 34px;
+      text-align: center;
+    }
+
+    .empty-state h2 {
+      margin: 0 0 8px;
+      font-size: var(--fs-section);
+      line-height: 1.18;
+      font-weight: var(--fw-black);
+    }
+
+    .empty-state p {
+      max-width: 430px;
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: var(--fs-body);
+      font-weight: var(--fw-semibold);
+    }
+
+    @media (max-width: 900px) {
+      .header__main {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+      }
+
+      .selection-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: auto;
+        max-width: none;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+
+      .header__main {
+        grid-template-columns: 38px minmax(0, 1fr) 34px 34px;
+        gap: 8px;
+      }
+
+      .brand__name,
+      .brand__caption,
+      .search,
+      .consult-button {
+        display: none;
+      }
+
+      .brand__mark {
+        width: 38px;
+        height: 38px;
+      }
+
+      .header__actions {
+        display: contents;
+      }
+
+      .header-phone {
+        grid-column: 2;
+        justify-self: center;
+        min-width: 0;
+        font-size: var(--fs-small);
+        font-weight: var(--fw-black);
+      }
+
+      .header__cta-row {
+        display: contents;
+      }
+
+      .header-selection {
+        grid-column: 3;
+        width: 34px;
+        height: 34px;
+        border-color: rgba(6, 71, 146, .16);
+        border-radius: 10px;
+        background: linear-gradient(180deg, #f8fbff 0%, #eaf2ff 100%);
+      }
+
+      .header-cart {
+        grid-column: 4;
+        width: 34px;
+        height: 34px;
+        border-color: rgba(6, 71, 146, .16);
+        border-radius: 10px;
+        background: linear-gradient(180deg, #f8fbff 0%, #eaf2ff 100%);
+      }
+
+      .header-selection__icon,
+      .header-cart .icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      .nav {
+        width: 100%;
+        max-width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+
+      .nav__links {
+        width: 100%;
+        max-width: 100%;
+        gap: 20px;
+        min-width: 0;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        flex-wrap: nowrap;
+      }
+
+      .nav__links a {
+        flex: 0 0 auto;
+      }
+
+      .selection-main {
+        padding: 24px 0 42px;
+      }
+
+      .selection-hero {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        align-items: start;
+        min-width: 0;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .selection-hero p {
+        font-size: var(--fs-body);
+        overflow-wrap: anywhere;
+      }
+
+      .back-link,
+      .primary-action,
+      .secondary-action {
+        width: 100%;
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .selection-aside p,
+      .empty-state p {
+        overflow-wrap: anywhere;
+      }
+
+      .selection-panel,
+      .selection-list,
+      .selection-aside {
+        min-width: 0;
+      }
+
+      .selection-list__head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .selection-item {
+        grid-template-columns: 70px minmax(0, 1fr);
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .sign-preview {
+        width: 62px;
+        height: 62px;
+      }
+
+      .selection-item__actions {
+        grid-column: 1 / -1;
+        grid-template-columns: 1fr 1fr;
+        justify-items: stretch;
+      }
+
+      .selection-item__link,
+      .selection-item__remove {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="container">
+        <div class="header__main">
+          <a class="brand" href="index.html" aria-label="АССА-ГРУП">
+            <img class="brand__mark" src="assa-logo.svg" alt="" aria-hidden="true">
+            <span>
+              <span class="brand__name">АССА-ГРУП</span>
+              <span class="brand__caption"><span>Дорожні знаки</span><span>та обладнання</span></span>
+            </span>
+          </a>
+
+          <form class="search" action="#" role="search">
+            <input type="search" placeholder="Номер або назва знака" aria-label="Пошук за номером або назвою знака">
+            <button type="submit" aria-label="Шукати">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+            </button>
+          </form>
+
+          <div class="header__actions">
+            <a class="header-phone" href="tel:+380506044384">(050) 604-43-84</a>
+            <div class="header__cta-row">
+              <a class="consult-button" href="tel:+380506044384">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.7.6 2.5a2 2 0 0 1-.4 2.1L8 9.6a16 16 0 0 0 6.4 6.4l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.6.5 2.5.6A2 2 0 0 1 22 16.9z"/></svg>
+                <span>Отримати консультацію</span>
+              </a>
+              <a class="header-selection" href="spysok-pidboru.html" aria-label="Список підбору">
+                <span class="header-selection__icon" aria-hidden="true"></span>
+                <span class="selection-count" data-selection-count></span>
+              </a>
+              <a class="header-cart" href="#" aria-label="Кошик">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h15l-2 9H8L6 3H3"/><circle cx="9" cy="20" r="1.8"/><circle cx="18" cy="20" r="1.8"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Головна навігація">
+          <div class="nav__links">
+            <a href="dorozhni-znaky.html">Дорожні знаки</a>
+            <a href="#">Дорожнє обладнання</a>
+            <a href="#">Тендери та закупівлі</a>
+            <a href="#">Про нас</a>
+            <a href="#">Контакти</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="selection-main">
+      <div class="container">
+        <section class="selection-hero">
+          <div>
+            <h1>Список підбору</h1>
+            <p>Збережені позиції з каталогу. Перевірте список перед консультацією, відкрийте потрібний товар або приберіть зайве.</p>
+          </div>
+          <a class="back-link" href="dorozhni-znaky.html">Повернутися до каталогу</a>
+        </section>
+
+        <section class="selection-panel">
+          <article class="selection-list">
+            <div class="selection-list__head">
+              <h2 class="selection-list__title">Обрані позиції</h2>
+              <span class="selection-list__meta" data-selection-summary>0 товарів</span>
+            </div>
+            <div class="selection-items" data-selection-items></div>
+            <div class="empty-state" data-empty-state hidden>
+              <div>
+                <h2>Список поки порожній</h2>
+                <p>Додайте знаки з каталогу, щоб сформувати підбір для консультації або заявки.</p>
+                <a class="back-link" href="dorozhni-znaky.html">Перейти до каталогу</a>
+              </div>
+            </div>
+          </article>
+
+          <aside class="selection-aside">
+            <h2>Консультація та замовлення</h2>
+            <p>Надішліть список менеджеру, щоб уточнити типорозмір, плівку, кріплення, кількість і терміни виготовлення.</p>
+            <div class="aside-actions">
+              <a class="primary-action" href="tel:+380506044384">Отримати консультацію по списку</a>
+              <button class="secondary-action" type="button" data-clear-selection>Очистити список</button>
+            </div>
+          </aside>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const selectionStorageKey = "assaSelectionList";
+    const itemsRoot = document.querySelector("[data-selection-items]");
+    const emptyState = document.querySelector("[data-empty-state]");
+    const summaryNode = document.querySelector("[data-selection-summary]");
+    const countNodes = document.querySelectorAll("[data-selection-count]");
+    const clearButton = document.querySelector("[data-clear-selection]");
+
+    const getSelectionList = () => {
+      try {
+        const parsed = JSON.parse(localStorage.getItem(selectionStorageKey) || "[]");
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        return [];
+      }
+    };
+
+    const saveSelectionList = (items) => {
+      localStorage.setItem(selectionStorageKey, JSON.stringify(items));
+    };
+
+    const getSummaryText = (count) => {
+      if (count === 1) return "1 товар";
+      if (count > 1 && count < 5) return `${count} товари`;
+      return `${count} товарів`;
+    };
+
+    const updateCount = (count) => {
+      countNodes.forEach((node) => {
+        node.textContent = count ? String(count) : "";
+      });
+      summaryNode.textContent = getSummaryText(count);
+    };
+
+    const renderSelection = () => {
+      const items = getSelectionList();
+      itemsRoot.innerHTML = "";
+      emptyState.hidden = items.length > 0;
+      updateCount(items.length);
+
+      const allowedSignTypes = new Set([
+        "sign-preview--triangle",
+        "sign-preview--circle",
+        "sign-preview--diamond",
+        "sign-preview--square"
+      ]);
+
+      items.forEach((item) => {
+        const article = document.createElement("article");
+        article.className = "selection-item";
+        article.dataset.selectionId = item.id;
+
+        const url = item.url && item.url !== "#" ? item.url : "dorozhni-znaky.html";
+        const signType = allowedSignTypes.has(item.signType) ? item.signType : "sign-preview--triangle";
+        const signLabel = item.signLabel || item.code?.replace("Знак ", "") || "";
+
+        const preview = document.createElement("div");
+        preview.className = `sign-preview ${signType}`;
+
+        const previewLabel = document.createElement("strong");
+        previewLabel.textContent = signLabel;
+        preview.append(previewLabel);
+
+        const content = document.createElement("div");
+
+        const code = document.createElement("span");
+        code.className = "selection-item__code";
+        code.textContent = item.code || "Дорожній знак";
+
+        const name = document.createElement("a");
+        name.className = "selection-item__name";
+        name.href = url;
+        name.textContent = item.name || "Позиція зі списку";
+
+        const price = document.createElement("span");
+        price.className = "selection-item__price";
+        price.textContent = item.price || "Ціна за запитом";
+
+        content.append(code, name, price);
+
+        const actions = document.createElement("div");
+        actions.className = "selection-item__actions";
+
+        const openLink = document.createElement("a");
+        openLink.className = "selection-item__link";
+        openLink.href = url;
+        openLink.textContent = "Відкрити";
+
+        const removeButton = document.createElement("button");
+        removeButton.className = "selection-item__remove";
+        removeButton.type = "button";
+        removeButton.textContent = "Прибрати";
+
+        actions.append(openLink, removeButton);
+        article.append(preview, content, actions);
+
+        itemsRoot.append(article);
+      });
+    };
+
+    itemsRoot.addEventListener("click", (event) => {
+      const removeButton = event.target.closest(".selection-item__remove");
+      if (!removeButton) return;
+
+      const item = removeButton.closest(".selection-item");
+      const id = item?.dataset.selectionId;
+      const nextItems = getSelectionList().filter((current) => current.id !== id);
+      saveSelectionList(nextItems);
+      renderSelection();
+    });
+
+    clearButton.addEventListener("click", () => {
+      saveSelectionList([]);
+      renderSelection();
+    });
+
+    renderSelection();
+  </script>
+</body>
+</html>
