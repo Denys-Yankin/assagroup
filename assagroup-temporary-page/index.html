@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Виробництво дорожніх знаків і дорожнього обладнання | АССА-ГРУП</title>
+  <meta name="description" content="АССА-ГРУП виготовляє дорожні знаки та дорожнє обладнання у Запоріжжі для замовників по всій Україні. Приймаємо запити телефоном або через email.">
+  <meta name="robots" content="index, follow">
+  <style>
+    :root {
+      --blue: #064792;
+      --blue-dark: #05366f;
+      --blue-soft: #eaf2ff;
+      --red: #e30016;
+      --red-soft: #fff3f4;
+      --text: #101722;
+      --muted: #5e6d82;
+      --line: #dce5f1;
+      --panel: #f5f8fc;
+      --white: #fff;
+      --shadow: 0 18px 42px rgba(17, 31, 52, .10);
+      --radius: 8px;
+      --font: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      background:
+        linear-gradient(180deg, rgba(6, 71, 146, .08) 0%, rgba(6, 71, 146, 0) 420px),
+        var(--white);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 3px solid rgba(227, 0, 22, .42);
+      outline-offset: 3px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding-bottom: 0;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(12px);
+    }
+
+    .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand__mark {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 auto;
+      object-fit: contain;
+    }
+
+    .brand__name {
+      display: block;
+      color: var(--blue);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand__caption {
+      display: block;
+      margin-top: 4px;
+      color: #334155;
+      font-size: 12px;
+      line-height: 1.15;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .header__contacts {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .phone-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: var(--radius);
+      color: var(--white);
+      background: var(--blue);
+      font-size: 15px;
+      font-weight: 900;
+      white-space: nowrap;
+      box-shadow: 0 12px 22px rgba(6, 71, 146, .16);
+    }
+
+    .hero {
+      padding: 70px 0 44px;
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 488px);
+      gap: 46px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: var(--blue);
+      font-size: 13px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      border-radius: 99px;
+      background: var(--red);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 690px;
+      margin-bottom: 20px;
+      color: #07111f;
+      font-size: clamp(34px, 4.8vw, 58px);
+      line-height: 1.03;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.58;
+      font-weight: 500;
+      overflow-wrap: break-word;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-size: 14px;
+      line-height: 1.1;
+      font-weight: 900;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .button--primary {
+      color: var(--white);
+      background: var(--blue);
+      box-shadow: 0 14px 26px rgba(6, 71, 146, .18);
+    }
+
+    .button--secondary {
+      border-color: rgba(6, 71, 146, .26);
+      color: var(--blue);
+      background: var(--white);
+    }
+
+    .contact-note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .contact-note a {
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .hero__photo {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      min-height: 0;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(6, 71, 146, .92), rgba(5, 54, 111, .78)),
+        var(--blue);
+      box-shadow: var(--shadow);
+    }
+
+    .hero__photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      align-content: center;
+      gap: 16px;
+      padding: 34px;
+      color: var(--white);
+    }
+
+    .hero__photo img + .photo-placeholder {
+      display: none;
+    }
+
+    .photo-placeholder::before {
+      content: "";
+      width: 72px;
+      height: 72px;
+      border: 8px solid rgba(255, 255, 255, .86);
+      border-bottom-color: var(--red);
+      border-radius: 50%;
+    }
+
+    .photo-placeholder strong {
+      display: block;
+      max-width: 330px;
+      font-size: 24px;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .photo-placeholder span {
+      display: block;
+      max-width: 360px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .trust {
+      padding: 10px 0 56px;
+    }
+
+    .trust__grid,
+    .products__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .trust__item,
+    .product-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+
+    .trust__item {
+      min-height: 128px;
+      padding: 20px;
+    }
+
+    .trust__item strong,
+    .product-card h3 {
+      display: block;
+      margin: 0 0 8px;
+      color: #07111f;
+      font-size: 17px;
+      line-height: 1.25;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .trust__item p,
+    .product-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.48;
+      font-weight: 500;
+    }
+
+    .section {
+      padding: 58px 0;
+    }
+
+    .section--panel {
+      background: var(--panel);
+    }
+
+    .section__head {
+      max-width: 720px;
+      margin-bottom: 26px;
+    }
+
+    .section__head h2,
+    .tender__content h2,
+    .contact h2 {
+      margin-bottom: 12px;
+      color: #07111f;
+      font-size: clamp(27px, 3.2vw, 38px);
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .section__head p,
+    .tender__content p,
+    .operations__main p,
+    .operations__item p,
+    .operations__status p,
+    .contact p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.58;
+      font-weight: 500;
+    }
+
+    .products__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-card {
+      min-height: 184px;
+      padding: 20px;
+    }
+
+    .product-card__mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 18px;
+      border-radius: var(--radius);
+      color: var(--blue);
+      background: var(--blue-soft);
+      font-weight: 900;
+    }
+
+    .tender {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      padding: 30px;
+      border: 1px solid rgba(6, 71, 146, .18);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .operations {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 350px;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .operations h2 {
+      margin-bottom: 12px;
+      color: #07111f;
+      font-size: clamp(27px, 3.2vw, 38px);
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .operations__label,
+    .operations__status-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 7px 10px;
+      border-radius: var(--radius);
+      color: var(--blue);
+      background: var(--blue-soft);
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+
+    .operations__list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .operations__item {
+      padding-top: 16px;
+      border-top: 2px solid rgba(6, 71, 146, .18);
+    }
+
+    .operations__item strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #07111f;
+      font-size: 16px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .operations__item p {
+      font-size: 14px;
+    }
+
+    .operations__status {
+      padding: 28px;
+      border-radius: var(--radius);
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      box-shadow: var(--shadow);
+    }
+
+    .operations__status-label {
+      color: var(--white);
+      background: rgba(255, 255, 255, .14);
+    }
+
+    .operations__status h3 {
+      margin: 0 0 12px;
+      color: var(--white);
+      font-size: 27px;
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .operations__status p {
+      color: rgba(255, 255, 255, .82);
+    }
+
+    .operations__date {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, .22);
+    }
+
+    .operations__date span,
+    .operations__date strong {
+      display: block;
+    }
+
+    .operations__date span {
+      color: rgba(255, 255, 255, .72);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .operations__date strong {
+      margin-top: 5px;
+      color: var(--white);
+      font-size: 22px;
+      line-height: 1.15;
+      font-weight: 900;
+    }
+
+    .contact {
+      padding: 34px;
+      border-radius: var(--radius);
+      color: var(--white);
+      background:
+        linear-gradient(135deg, var(--blue), var(--blue-dark));
+    }
+
+    .contact h2 {
+      color: var(--white);
+    }
+
+    .contact p {
+      max-width: 760px;
+      color: rgba(255, 255, 255, .82);
+    }
+
+    .contact .actions {
+      margin-top: 24px;
+    }
+
+    .contact .button--primary {
+      color: var(--blue);
+      background: var(--white);
+      box-shadow: none;
+    }
+
+    .contact .button--secondary {
+      border-color: rgba(255, 255, 255, .48);
+      color: var(--white);
+      background: transparent;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      color: #64748b;
+      background: var(--white);
+      font-size: 13px;
+    }
+
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 0;
+    }
+
+    .footer__contacts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+      font-weight: 800;
+    }
+
+    .footer a {
+      color: var(--blue);
+    }
+
+    .mobile-bar {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .hero__grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero__photo {
+        min-height: 320px;
+      }
+
+      .hero__photo img {
+        min-height: 320px;
+      }
+
+      .products__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .tender,
+      .operations,
+      .operations__list {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding-bottom: 72px;
+      }
+
+      .header {
+        position: static;
+      }
+
+      .header__inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .header__contacts {
+        width: 100%;
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .phone-link {
+        width: 100%;
+      }
+
+      .hero {
+        padding: 44px 0 34px;
+      }
+
+      h1 {
+        font-size: 30px;
+        line-height: 1.1;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .trust {
+        padding-bottom: 40px;
+      }
+
+      .trust__grid,
+      .products__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 44px 0;
+      }
+
+      .tender,
+      .contact {
+        padding: 22px;
+      }
+
+      .footer__inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer__contacts {
+        justify-content: flex-start;
+      }
+
+      .mobile-bar {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 30;
+        display: grid;
+        grid-template-columns: 1.15fr .85fr;
+        gap: 8px;
+        padding: 10px 12px;
+        border-top: 1px solid var(--line);
+        background: rgba(255, 255, 255, .96);
+        backdrop-filter: blur(10px);
+      }
+
+      .mobile-bar a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        border-radius: var(--radius);
+        font-size: 14px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .mobile-bar__phone {
+        color: var(--white);
+        background: var(--blue);
+      }
+
+      .mobile-bar__email {
+        border: 1px solid rgba(6, 71, 146, .26);
+        color: var(--blue);
+        background: var(--white);
+      }
+
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(358px, calc(100% - 32px));
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "АССА-ГРУП",
+      "telephone": "+380506044384",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Запоріжжя",
+        "addressCountry": "UA"
+      },
+      "areaServed": "Україна",
+      "description": "Виробництво дорожніх знаків та дорожнього обладнання."
+    }
+  </script>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <a class="brand" href="./" aria-label="АССА-ГРУП">
+            <img class="brand__mark" src="assets/assa-logo.svg" alt="" width="56" height="56">
+            <span>
+              <span class="brand__name">АССА-ГРУП</span>
+              <span class="brand__caption">Дорожні знаки та обладнання</span>
+            </span>
+          </a>
+
+          <div class="header__contacts" aria-label="Контакти">
+            <a class="phone-link" href="tel:+380506044384">(050) 604-43-84</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="hero__grid">
+            <div class="hero__content">
+              <span class="eyebrow">Новий сайт у розробці</span>
+              <h1 id="hero-title">Виробництво дорожніх знаків та дорожнього обладнання</h1>
+              <p class="lead">АССА-ГРУП виготовляє дорожні знаки та дорожнє обладнання для організації дорожнього руху. Новий сайт зараз у розробці, але компанія працює та приймає запити від замовників.</p>
+
+              <div class="actions" aria-label="Основні дії">
+                <a class="button button--primary" href="tel:+380506044384">Зателефонувати</a>
+                <a class="button button--secondary" href="mailto:assazp@ukr.net?subject=%D0%97%D0%B0%D0%BF%D0%B8%D1%82%20%D1%89%D0%BE%D0%B4%D0%BE%20%D0%B4%D0%BE%D1%80%D0%BE%D0%B6%D0%BD%D1%96%D1%85%20%D0%B7%D0%BD%D0%B0%D0%BA%D1%96%D0%B2">Написати на email</a>
+              </div>
+
+              <p class="contact-note">Найшвидше — зателефонувати. Якщо маєте технічне завдання, перелік знаків або тендерний запит, його можна надіслати електронною поштою.</p>
+            </div>
+
+            <figure class="hero__photo" aria-label="Фото дорожніх знаків АССА-ГРУП">
+              <img src="assets/dorozhni-znaky-hero.jpg" alt="Готові дорожні знаки АССА-ГРУП" width="900" height="1600" onerror="this.parentElement.classList.add('hero__photo--empty'); this.remove();">
+              <figcaption class="photo-placeholder">
+                <strong>Дорожні знаки та обладнання для об'єктів</strong>
+                <span>АССА-ГРУП виготовляє дорожні знаки та дорожнє обладнання для замовників по Україні.</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="trust" aria-label="Коротко про роботу">
+        <div class="container">
+          <div class="trust__grid">
+            <div class="trust__item">
+              <strong>Виробництво</strong>
+              <p>Виготовляємо дорожні знаки та супутнє обладнання під потреби об'єкта.</p>
+            </div>
+            <div class="trust__item">
+              <strong>Під потреби об'єкта</strong>
+              <p>Підбираємо рішення для доріг, підприємств, паркінгів і приватних територій.</p>
+            </div>
+            <div class="trust__item">
+              <strong>Тендерні запити</strong>
+              <p>Приймаємо тендерні запити та готуємо інформацію щодо продукції.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--panel" aria-labelledby="products-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 id="products-title">Напрямки продукції</h2>
+            <p>Працюємо у двох основних напрямах: дорожні знаки та дорожнє обладнання.</p>
+          </div>
+
+          <div class="products__grid">
+            <article class="product-card">
+              <span class="product-card__mark">01</span>
+              <h3>Дорожні знаки</h3>
+              <p>Виготовлення дорожніх знаків для доріг, підприємств, паркінгів, приватних територій та інших об'єктів.</p>
+            </article>
+
+            <article class="product-card">
+              <span class="product-card__mark">02</span>
+              <h3>Дорожнє обладнання</h3>
+              <p>Обладнання для організації руху, безпеки територій, монтажу та комплектації об'єктів: стійки, кріплення, дзеркала та інші елементи.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="tender-title">
+        <div class="container">
+          <div class="tender">
+            <div class="tender__content">
+              <h2 id="tender-title">Працюємо з тендерними замовниками</h2>
+              <p>АССА-ГРУП приймає запити від організацій, підприємств і підрядників, яким потрібні дорожні знаки та дорожнє обладнання. За запитом можемо підготувати інформацію щодо продукції, характеристик, строків виготовлення та умов співпраці.</p>
+              <div class="actions">
+                <a class="button button--primary" href="tel:+380506044384">Зателефонувати щодо тендера</a>
+                <a class="button button--secondary" href="mailto:assazp@ukr.net?subject=%D0%A2%D0%B5%D0%BD%D0%B4%D0%B5%D1%80%D0%BD%D0%B8%D0%B9%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%82%20%D1%89%D0%BE%D0%B4%D0%BE%20%D0%B4%D0%BE%D1%80%D0%BE%D0%B6%D0%BD%D1%96%D1%85%20%D0%B7%D0%BD%D0%B0%D0%BA%D1%96%D0%B2">Надіслати запит</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--panel" aria-labelledby="operations-title">
+        <div class="container">
+          <div class="operations">
+            <div class="operations__main">
+              <span class="operations__label">Запоріжжя / вся Україна</span>
+              <h2 id="operations-title">Виробництво у Запоріжжі, замовлення по всій Україні</h2>
+              <p>АССА-ГРУП працює з підприємствами, підрядниками, дорожніми службами, паркінгами, ОСББ та приватними об'єктами. Поки новий сайт готується, запити щодо дорожніх знаків і дорожнього обладнання приймаються у звичайному режимі.</p>
+
+              <div class="operations__list" aria-label="Поточна робота">
+                <div class="operations__item">
+                  <strong>Приймаємо запити зараз</strong>
+                  <p>Можна звертатися щодо виробництва, строків, комплектації та умов співпраці.</p>
+                </div>
+
+                <div class="operations__item">
+                  <strong>Готуємо матеріали сайту</strong>
+                  <p>Каталог продукції, товарні сторінки та технічна інформація будуть додані поступово.</p>
+                </div>
+              </div>
+            </div>
+
+            <aside class="operations__status" aria-label="Статус запуску сайту">
+              <span class="operations__status-label">Статус сайту</span>
+              <h3>Повний сайт готується до запуску</h3>
+              <p>Сторінка тимчасово працює як головний контактний екран компанії, поки оновлюється основний сайт.</p>
+              <div class="operations__date">
+                <span>Орієнтовний запуск</span>
+                <strong>липень 2026 року</strong>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="contact">
+            <h2 id="contact-title">Потрібні дорожні знаки або обладнання для об'єкта?</h2>
+            <p>Найшвидше — зателефонувати нам. Якщо маєте технічне завдання, перелік знаків або тендерний запит, надішліть матеріали електронною поштою — ми переглянемо інформацію та зв'яжемося з вами.</p>
+            <div class="actions">
+              <a class="button button--primary" href="tel:+380506044384">Зателефонувати</a>
+              <a class="button button--secondary" href="mailto:assazp@ukr.net?subject=%D0%97%D0%B0%D0%BF%D0%B8%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%90%D0%A1%D0%A1%D0%90-%D0%93%D0%A0%D0%A3%D0%9F">Написати на email</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <span>© 2026 АССА-ГРУП. Виробництво дорожніх знаків та дорожнього обладнання.</span>
+          <div class="footer__contacts">
+            <a href="tel:+380506044384">(050) 604-43-84</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <nav class="mobile-bar" aria-label="Швидкі контакти">
+    <a class="mobile-bar__phone" href="tel:+380506044384">Подзвонити</a>
+    <a class="mobile-bar__email" href="mailto:assazp@ukr.net?subject=%D0%97%D0%B0%D0%BF%D0%B8%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%90%D0%A1%D0%A1%D0%90-%D0%93%D0%A0%D0%A3%D0%9F">Email</a>
+  </nav>
+</body>
+</html>
