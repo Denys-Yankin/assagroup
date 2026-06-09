@@ -1,7 +1,9 @@
 # Assets for the temporary AC Group page
 
-Hero production photo:
+Optimized hero production photos:
 
-`dorozhni-znaky-hero.jpg`
+`dorozhni-znaky-hero-480.webp`
+`dorozhni-znaky-hero-720.webp`
+`dorozhni-znaky-hero-720.jpg`
 
-Current source image is 900 x 1600 px. Replace this file with a newer production photo when needed.
+The HTML uses WebP through `picture` and keeps the JPG as fallback.

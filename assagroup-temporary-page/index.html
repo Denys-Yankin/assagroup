@@ -6,6 +6,7 @@
   <title>Виробництво дорожніх знаків і дорожнього обладнання | АССА-ГРУП</title>
   <meta name="description" content="АССА-ГРУП виготовляє дорожні знаки та дорожнє обладнання у Запоріжжі для замовників по всій Україні. Приймаємо запити телефоном або через email.">
   <meta name="robots" content="index, follow">
+  <link rel="preload" as="image" href="assets/dorozhni-znaky-hero-720.webp" imagesrcset="assets/dorozhni-znaky-hero-480.webp 480w, assets/dorozhni-znaky-hero-720.webp 720w" imagesizes="(max-width: 720px) 358px, 488px" type="image/webp">
   <style>
     :root {
       --blue: #064792;
@@ -272,6 +273,12 @@
       object-position: center center;
     }
 
+    .hero__photo picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
     .photo-placeholder {
       position: absolute;
       inset: 0;
@@ -282,7 +289,8 @@
       color: var(--white);
     }
 
-    .hero__photo img + .photo-placeholder {
+    .hero__photo img + .photo-placeholder,
+    .hero__photo picture + .photo-placeholder {
       display: none;
     }
 
@@ -796,7 +804,10 @@
             </div>
 
             <figure class="hero__photo" aria-label="Фото дорожніх знаків АССА-ГРУП">
-              <img src="assets/dorozhni-znaky-hero.jpg" alt="Готові дорожні знаки АССА-ГРУП" width="900" height="1600" onerror="this.parentElement.classList.add('hero__photo--empty'); this.remove();">
+              <picture>
+                <source type="image/webp" srcset="assets/dorozhni-znaky-hero-480.webp 480w, assets/dorozhni-znaky-hero-720.webp 720w" sizes="(max-width: 720px) 358px, 488px">
+                <img src="assets/dorozhni-znaky-hero-720.jpg" alt="Готові дорожні знаки АССА-ГРУП" width="720" height="900" decoding="async" fetchpriority="high" onerror="this.closest('.hero__photo').classList.add('hero__photo--empty'); this.closest('picture').remove();">
+              </picture>
               <figcaption class="photo-placeholder">
                 <strong>Дорожні знаки та обладнання для об'єктів</strong>
                 <span>АССА-ГРУП виготовляє дорожні знаки та дорожнє обладнання для замовників по Україні.</span>
