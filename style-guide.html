@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style Guide | АССА-ГРУП</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="ag-page">
+    <section class="ag-style-hero">
+      <div class="ag-container">
+        <div class="ag-style-hero__panel">
+          <div class="ag-section__head">
+            <span class="ag-eyebrow">Дизайн-система</span>
+            <h1 class="ag-page-title">Єдиний стиль сторінок АССА-ГРУП</h1>
+            <p class="ag-lead">Ця службова сторінка фіксує базові кольори, типографіку, кнопки, картки, таблиці, форми, фільтри, FAQ і футер. Далі нові блоки варто збирати з цих елементів, щоб сайт не розпадався на різні стилі.</p>
+          </div>
+          <div class="ag-card ag-card--accent ag-card--soft">
+            <h2 class="ag-card-title">Базовий принцип</h2>
+            <p class="ag-lead">Одна гарнітура, 4 ваги, компактні заголовки, синій як основний колір, червоний тільки як стриманий акцент.</p>
+            <div class="ag-badge-row">
+              <span class="ag-badge ag-badge--blue">Segoe UI</span>
+              <span class="ag-badge">400 / 500 / 700 / 800</span>
+              <span class="ag-badge ag-badge--red">Червоний акцент</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Header і навігація</h2>
+          <p class="ag-lead">Шапка має залишатися функціональною і компактною: логотип, пошук, телефон, консультація, список підбору і коротке меню без зайвих пунктів.</p>
+        </div>
+        <header class="ag-header">
+          <div class="ag-header__main">
+              <a class="ag-brand" href="index.html">
+                <img class="ag-brand__mark" src="assa-logo.svg" alt="АССА-ГРУП">
+                <span>
+                  <span class="ag-brand__name">АССА-ГРУП</span>
+                  <span class="ag-brand__caption">Дорожні знаки<br>та обладнання</span>
+                </span>
+              </a>
+              <form class="ag-search" action="#">
+                <input type="search" placeholder="Пошук товарів...">
+                <button type="button" aria-label="Пошук">
+                  <svg class="ag-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16.5 16.5 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+              </form>
+              <div class="ag-header__actions">
+                <a class="ag-phone" href="tel:+380506044384">(050) 604-43-84</a>
+                <a class="ag-button" href="#">Консультація</a>
+              </div>
+          </div>
+          <nav class="ag-nav" aria-label="Головне меню">
+            <ul class="ag-nav__list">
+              <li><a class="is-active" href="dorozhni-znaky.html">Дорожні знаки</a></li>
+              <li><a href="#">Дорожнє обладнання</a></li>
+              <li><a href="tendery-ta-zakupivli.html">Тендери та закупівлі</a></li>
+              <li><a href="#">Про нас</a></li>
+              <li><a href="#">Контакти</a></li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Кольори</h2>
+          <p class="ag-lead">Палітра має залишатися стриманою: синій відповідає за бренд і дії, червоний використовується точково, нейтральні кольори тримають сторінку чистою.</p>
+        </div>
+        <div class="ag-token-grid">
+          <div class="ag-token"><span class="ag-token__swatch ag-token__swatch--blue"></span><strong>Brand Blue</strong><span>#064792</span></div>
+          <div class="ag-token"><span class="ag-token__swatch ag-token__swatch--blue-dark"></span><strong>Blue Dark</strong><span>#003b82</span></div>
+          <div class="ag-token"><span class="ag-token__swatch ag-token__swatch--red"></span><strong>Accent Red</strong><span>#e30016</span></div>
+          <div class="ag-token"><span class="ag-token__swatch ag-token__swatch--yellow"></span><strong>Signal Yellow</strong><span>#ffd400</span></div>
+          <div class="ag-token"><span class="ag-token__swatch ag-token__swatch--ink"></span><strong>Ink</strong><span>#101318</span></div>
+          <div class="ag-token"><span class="ag-token__swatch ag-token__swatch--muted"></span><strong>Muted</strong><span>#657086</span></div>
+          <div class="ag-token"><span class="ag-token__swatch ag-token__swatch--line"></span><strong>Line</strong><span>#dfe4ec</span></div>
+          <div class="ag-token"><span class="ag-token__swatch ag-token__swatch--panel"></span><strong>Panel</strong><span>#f6f7f9</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Типографіка</h2>
+          <p class="ag-lead">Заголовки блоків повинні бути одного характеру на всіх сторінках: без зайвої декоративності, з однаковою вагою і контрольованим розміром.</p>
+        </div>
+        <div class="ag-type-scale">
+          <div class="ag-type-row">
+            <div class="ag-type-meta"><strong>Page / Hero title</strong><span>30px / 800 / 1.22, mobile 26px</span></div>
+            <div class="ag-type-sample"><h2 class="ag-page-title">Тендери та закупівлі дорожніх знаків</h2></div>
+          </div>
+          <div class="ag-type-row">
+            <div class="ag-type-meta"><strong>Section title</strong><span>20px / 700 / 1.22</span></div>
+            <div class="ag-type-sample"><h2 class="ag-section-title">Процедури та пороги закупівель</h2></div>
+          </div>
+          <div class="ag-type-row">
+            <div class="ag-type-meta"><strong>Card title / Form title</strong><span>16px / 700 / 1.22</span></div>
+            <div class="ag-type-sample"><h3 class="ag-card-title">Документи для закупівлі</h3></div>
+          </div>
+          <div class="ag-type-row">
+            <div class="ag-type-meta"><strong>Small block title</strong><span>14px / 700 / 1.22</span></div>
+            <div class="ag-type-sample"><h3 class="ag-small-title">Що готуємо</h3></div>
+          </div>
+          <div class="ag-type-row">
+            <div class="ag-type-meta"><strong>Eyebrow / label</strong><span>12px / 700 / uppercase</span></div>
+            <div class="ag-type-sample"><span class="ag-eyebrow">перед замовленням</span></div>
+          </div>
+          <div class="ag-type-row">
+            <div class="ag-type-meta"><strong>Body text</strong><span>14px / 500 / 1.55</span></div>
+            <div class="ag-type-sample"><p class="ag-type-body">У каталозі зібрані дорожні знаки для доріг, паркінгів, підприємств, ЖК, будівельних майданчиків і тимчасових схем руху.</p></div>
+          </div>
+          <div class="ag-type-row">
+            <div class="ag-type-meta"><strong>Small text</strong><span>13px / 500 / 1.42</span></div>
+            <div class="ag-type-sample"><p class="ag-type-small">Допоміжний опис у картках, фільтрах, характеристиках і документах.</p></div>
+          </div>
+          <div class="ag-type-row">
+            <div class="ag-type-meta"><strong>Caption / badge</strong><span>12px / 500-700 / 1.15</span></div>
+            <div class="ag-type-sample"><p class="ag-type-caption">Код товару, статус, підпис під телефоном або пояснення.</p></div>
+          </div>
+          <div class="ag-type-row">
+            <div class="ag-type-meta"><strong>Compact</strong><span>12px / 500 / service text</span></div>
+            <div class="ag-type-sample"><p class="ag-type-compact">Службова інформація, дрібні пояснення, другорядні підписи.</p></div>
+          </div>
+        </div>
+        <div class="ag-grid ag-grid--2">
+          <div class="ag-card">
+            <span class="ag-eyebrow">H1</span>
+            <h2 class="ag-page-title">Дорожні знаки та обладнання за ДСТУ</h2>
+            <p class="ag-lead">Основний заголовок сторінки: 30px desktop, 26px mobile, вага 800.</p>
+          </div>
+          <div class="ag-card">
+            <h2 class="ag-section-title">Для кого цей знак</h2>
+            <h3 class="ag-card-title">Таблиця типорозмірів</h3>
+            <p class="ag-lead">Заголовок секції, назва картки і основний текст мають чітку ієрархію без розкиду розмірів.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Кнопки та бейджі</h2>
+        </div>
+        <div class="ag-panel">
+          <div class="ag-button-row">
+            <a class="ag-button" href="#">Придбати</a>
+            <a class="ag-button ag-button--secondary" href="#">Додати в обране</a>
+            <a class="ag-button ag-button--danger" href="#">Замовити консультацію</a>
+          </div>
+          <div class="ag-badge-row ag-mt-16">
+            <span class="ag-badge ag-badge--blue">ДСТУ 4100:2021</span>
+            <span class="ag-badge">В наявності</span>
+            <span class="ag-badge ag-badge--red">Під замовлення</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Hero-блок сторінки</h2>
+          <p class="ag-lead">Базовий hero для сторінок категорій, закупівель і сервісних напрямів: текст зліва, функціональна ілюстрація або візуальний доказ справа, коротка лінія параметрів під діями.</p>
+        </div>
+        <div class="ag-hero-module">
+          <div class="ag-hero-module__copy">
+            <span class="ag-eyebrow">B2B та закупівлі</span>
+            <h2 class="ag-page-title">Дорожні знаки для тендерів і комерційних замовлень</h2>
+            <p class="ag-lead">Підготуємо комерційну пропозицію, специфікацію, технічний опис і документи на продукцію для державного або B2B-замовлення.</p>
+            <div class="ag-button-row">
+              <a class="ag-button" href="#">Надіслати запит</a>
+              <a class="ag-button ag-button--secondary" href="#">Переглянути каталог</a>
+            </div>
+            <div class="ag-proofline">
+              <span>ДСТУ 4100:2021</span>
+              <span>CPV 34992200-9</span>
+              <span>Безготівковий розрахунок</span>
+            </div>
+          </div>
+          <div class="ag-hero-module__visual">
+            <img src="tender-hero-procurement-final.png" alt="Технічна ілюстрація дорожнього знака">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Картки</h2>
+          <p class="ag-lead">Один стиль для переваг, документів, комплектації і товарних карток: білий фон, тонка рамка, м’яка тінь, без важких декоративних ефектів.</p>
+        </div>
+        <div class="ag-grid ag-grid--3">
+          <article class="ag-card ag-card--accent">
+            <span class="ag-badge ag-badge--blue">Виробництво</span>
+            <h3 class="ag-card-title">Власне виробництво</h3>
+            <p class="ag-lead">Контроль матеріалів, плівки, геометрії та маркування на кожному етапі.</p>
+          </article>
+          <article class="ag-card">
+            <span class="ag-badge">Документи</span>
+            <h3 class="ag-card-title">Пакет для закупівлі</h3>
+            <p class="ag-lead">КП, рахунок, специфікація, гарантійний лист і технічний опис.</p>
+          </article>
+          <article class="ag-card">
+            <span class="ag-badge ag-badge--red">Підтримка</span>
+            <h3 class="ag-card-title">Консультація перед замовленням</h3>
+            <p class="ag-lead">Допомагаємо підібрати знак, типорозмір, плівку, стійку та кріплення.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Сценарні картки</h2>
+          <p class="ag-lead">Патерн для блоків типу “Оберіть формат замовлення”, “Постачання для бізнесу”, “Швидкі добірки” або інших сценаріїв вибору.</p>
+        </div>
+        <div class="ag-grid ag-grid--2">
+          <article class="ag-route-card">
+            <span class="ag-route-card__label">для Prozorro та договорів</span>
+            <h3 class="ag-card-title">Державні закупівлі</h3>
+            <p class="ag-lead">Підготуємо пропозицію і документи під вимоги закупівлі.</p>
+            <ul class="ag-check-list">
+              <li>Комерційна пропозиція</li>
+              <li>Технічний опис без зайвої прив’язки</li>
+              <li>Документи на продукцію</li>
+            </ul>
+            <a class="ag-link" href="#">Запит для закупівлі</a>
+          </article>
+          <article class="ag-route-card">
+            <span class="ag-route-card__label">для підприємств і підрядників</span>
+            <h3 class="ag-card-title">B2B-постачання</h3>
+            <p class="ag-lead">Розрахуємо знаки для об'єкта, паркінгу або території підприємства.</p>
+            <ul class="ag-check-list">
+              <li>Підбір знаків і комплектації</li>
+              <li>Стійки, кріплення, додаткові елементи</li>
+              <li>Рахунок і специфікація</li>
+            </ul>
+            <a class="ag-link" href="#">Отримати КП</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Процес і пороги</h2>
+          <p class="ag-lead">Картки порогів, етапи супроводу і службові примітки мають виглядати як частина одного модуля, а не як випадковий список.</p>
+        </div>
+        <div class="ag-grid ag-grid--3">
+          <article class="ag-threshold-card">
+            <h3 class="ag-card-title">Прямий договір</h3>
+            <p class="ag-type-body">Пряма закупівля або звіт про договір без використання електронної системи.</p>
+            <div class="ag-threshold-card__docs">
+              <strong>Що готуємо</strong>
+              <ul class="ag-check-list">
+                <li>Комерційна пропозиція</li>
+                <li>Рахунок і специфікація</li>
+                <li>Документи на продукцію</li>
+              </ul>
+            </div>
+          </article>
+          <article class="ag-threshold-card">
+            <h3 class="ag-card-title">Спрощена закупівля</h3>
+            <p class="ag-type-body">Підготовка технічної частини, цінової пропозиції і уточнення параметрів.</p>
+            <div class="ag-threshold-card__docs">
+              <strong>Що готуємо</strong>
+              <ul class="ag-check-list">
+                <li>Технічний опис</li>
+                <li>Гарантійний лист</li>
+                <li>Уточнення по ДСТУ</li>
+              </ul>
+            </div>
+          </article>
+          <article class="ag-threshold-card">
+            <h3 class="ag-card-title">Відкриті торги</h3>
+            <p class="ag-type-body">Комплект документів і технічна відповідність для більших партій.</p>
+            <div class="ag-threshold-card__docs">
+              <strong>Що готуємо</strong>
+              <ul class="ag-check-list">
+                <li>Специфікація партії</li>
+                <li>Паспорт якості</li>
+                <li>Супровідні документи</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div class="ag-step-list">
+          <div class="ag-step"><div><strong>Приймаємо запит</strong><span>Перелік знаків, кількість, об’єкт або технічне завдання.</span></div></div>
+          <div class="ag-step"><div><strong>Уточнюємо параметри</strong><span>Типорозмір, матеріал, плівка, кріплення, строки і документи.</span></div></div>
+          <div class="ag-step"><div><strong>Готуємо пропозицію</strong><span>КП, рахунок, специфікація і технічна частина для замовника.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Документні картки</h2>
+          <p class="ag-lead">Патерн для блоків “Документи, які надаємо”, “Технічні характеристики та ДСТУ”, “Що входить у поставку”.</p>
+        </div>
+        <div class="ag-grid ag-grid--2">
+          <article class="ag-doc-card ag-module--topline">
+            <span class="ag-card__tag">На продукцію</span>
+            <h3 class="ag-card-title">Документи, які надаємо</h3>
+            <div class="ag-doc-row">
+              <div><strong>Рахунок і специфікація</strong><span>Для погодження ціни, комплектації і кількості.</span></div>
+              <em class="ag-badge">стандартно</em>
+            </div>
+            <div class="ag-doc-row">
+              <div><strong>Паспорт якості</strong><span>Підтвердження параметрів виробу.</span></div>
+              <em class="ag-badge ag-badge--blue">за запитом</em>
+            </div>
+          </article>
+          <article class="ag-doc-card">
+            <span class="ag-card__tag">Технічний опис</span>
+            <h3 class="ag-card-title">Характеристики та ДСТУ</h3>
+            <ul class="ag-spec-list">
+              <li><span>Стандарт</span><strong>ДСТУ 4100:2021</strong></li>
+              <li><span>Матеріал</span><strong>Оцинкований метал</strong></li>
+              <li><span>Плівка</span><strong>5 / 7 / 10 років</strong></li>
+              <li><span>Комплектація</span><strong>знак, пакування, документи</strong></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Картка товару в категорії</h2>
+        </div>
+        <article class="ag-product-card">
+          <div class="ag-product-card__image">
+            <img src="sign-1-1-main.png" alt="Знак 1.1 Небезпечний поворот праворуч">
+          </div>
+          <div class="ag-product-card__body">
+            <span class="ag-product-card__code">Знак 1.1</span>
+            <h3 class="ag-product-card__name">Небезпечний поворот праворуч</h3>
+            <p class="ag-product-card__text">Попереджувальний дорожній знак для встановлення перед ділянкою з обмеженою оглядовістю.</p>
+            <div class="ag-badge-row">
+              <span class="ag-badge">Метал</span>
+              <span class="ag-badge">I-IV</span>
+              <span class="ag-badge ag-badge--blue">ДСТУ</span>
+            </div>
+            <div class="ag-product-card__foot">
+              <strong class="ag-price">від 550 грн</strong>
+              <a class="ag-button" href="#">Детальніше</a>
+              <button class="ag-favorite" type="button" aria-label="Додати в обране">
+                <svg class="ag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Фільтри</h2>
+        </div>
+        <div class="ag-grid ag-filter-demo">
+          <aside class="ag-filter-panel">
+            <div class="ag-filter-group">
+              <h3 class="ag-filter-title">Група знаків</h3>
+              <label class="ag-choice"><input type="checkbox" checked> Попереджувальні знаки</label>
+              <label class="ag-choice"><input type="checkbox"> Знаки пріоритету</label>
+              <label class="ag-choice"><input type="checkbox"> Заборонні знаки</label>
+            </div>
+            <div class="ag-filter-group">
+              <h3 class="ag-filter-title">Де буде встановлено</h3>
+              <label class="ag-choice"><input type="checkbox"> Паркінг</label>
+              <label class="ag-choice"><input type="checkbox"> ЖК / ОСББ / двір</label>
+              <label class="ag-choice"><input type="checkbox"> Підприємство / склад</label>
+            </div>
+          </aside>
+          <div class="ag-panel">
+            <h3 class="ag-card-title">Результат підбору</h3>
+            <p class="ag-lead">Фільтр повинен бути зрозумілим без пояснень: спочатку групи ДСТУ, потім місце встановлення, потім задача.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Сортування і пагінація</h2>
+          <p class="ag-lead">Ці контролі потрібні для каталогу: вони мають бути спокійні, компактні й не конкурувати з картками товарів.</p>
+        </div>
+        <div class="ag-sortbar">
+          <div class="ag-segmented" aria-label="Сортування">
+            <button class="is-active" type="button">Популярні</button>
+            <button type="button">За номером знаку</button>
+            <button type="button">Спочатку дорожче</button>
+            <button type="button">В наявності</button>
+          </div>
+          <div class="ag-segmented" aria-label="Кількість на сторінці">
+            <button class="is-active" type="button">20</button>
+            <button type="button">50</button>
+          </div>
+        </div>
+        <nav class="ag-pagination" aria-label="Пагінація">
+          <span class="is-active">1</span>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#" aria-label="Наступна сторінка">›</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Форма запиту</h2>
+        </div>
+        <form class="ag-panel">
+          <div class="ag-grid ag-grid--2">
+            <label class="ag-field"><span>Ім’я</span><input class="ag-input" type="text" placeholder="Ваше ім’я"></label>
+            <label class="ag-field"><span>Телефон</span><input class="ag-input" type="tel" placeholder="+380"></label>
+            <label class="ag-field"><span>Формат замовлення</span><select class="ag-select"><option>Державна закупівля</option><option>B2B-замовлення</option></select></label>
+            <label class="ag-field"><span>Кількість</span><input class="ag-input" type="text" placeholder="Наприклад, 20 знаків"></label>
+            <label class="ag-field ag-field--wide"><span>Коментар</span><textarea class="ag-textarea" placeholder="Опишіть задачу або прикріпіть технічне завдання на робочій сторінці"></textarea></label>
+          </div>
+          <div class="ag-button-row ag-mt-16">
+            <button class="ag-button" type="button">Надіслати запит</button>
+            <a class="ag-link" href="tel:+380506044384">(050) 604-43-84</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">Таблиці та характеристики</h2>
+        </div>
+        <div class="ag-grid ag-grid--2">
+          <div class="ag-table-wrap">
+            <table class="ag-table">
+              <thead>
+                <tr><th>Параметр</th><th>Значення</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Категорія</td><td>Попереджувальні знаки</td></tr>
+                <tr><td>Матеріал</td><td>Оцинкований метал</td></tr>
+                <tr><td>Стандарт</td><td>ДСТУ 4100:2021</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="ag-card">
+            <h3 class="ag-card-title">Комплектація</h3>
+            <ul class="ag-spec-list">
+              <li><span>Дорожній знак</span><strong>входить</strong></li>
+              <li><span>Пакування</span><strong>входить</strong></li>
+              <li><span>Кріплення</span><strong>окремо / комплект</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ag-section">
+      <div class="ag-container ag-stack">
+        <div class="ag-section__head">
+          <h2 class="ag-section-title">FAQ</h2>
+        </div>
+        <div class="ag-faq">
+          <details open>
+            <summary>Чи можна замовити знаки під технічне завдання?</summary>
+            <p>Так, можна виготовити стандартні знаки, комплекти або індивідуальні рішення під вимоги об’єкта чи закупівлі.</p>
+          </details>
+          <details>
+            <summary>Які документи можна отримати разом із замовленням?</summary>
+            <p>Комерційну пропозицію, рахунок, специфікацію, гарантійний лист, технічний опис і документи на продукцію.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ag-footer">
+      <div class="ag-container">
+        <div class="ag-footer__inner">
+          <div>
+            <div class="ag-footer__brand">
+              <img src="assa-logo.svg" alt="АССА-ГРУП">
+              <div>
+                <span class="ag-footer__name">АССА-ГРУП</span>
+                <span class="ag-footer__caption">ФОП Крилащенко О.Л.<br>Дорожні знаки та обладнання</span>
+              </div>
+            </div>
+          </div>
+          <nav aria-label="Меню">
+            <h2 class="ag-footer__title">Меню</h2>
+            <ul class="ag-footer__links">
+              <li><a href="dorozhni-znaky.html">Дорожні знаки</a></li>
+              <li><a href="tendery-ta-zakupivli.html">Тендери та закупівлі</a></li>
+              <li><a href="#">Про нас</a></li>
+              <li><a href="#">Контакти</a></li>
+            </ul>
+          </nav>
+          <nav aria-label="Категорії">
+            <h2 class="ag-footer__title">Категорії</h2>
+            <ul class="ag-footer__links">
+              <li><a href="#">Попереджувальні знаки</a></li>
+              <li><a href="#">Знаки пріоритету</a></li>
+              <li><a href="#">Заборонні знаки</a></li>
+              <li><a href="#">Таблички до знаків</a></li>
+            </ul>
+          </nav>
+          <div class="ag-footer__contact">
+            <span class="ag-eyebrow">Консультація</span>
+            <a class="ag-footer__phone" href="tel:+380506044384">(050) 604-43-84</a>
+            <a class="ag-footer__cta" href="#">Замовити консультацію</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
